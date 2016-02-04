@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>无标题文档</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="dist/public/css/public.css">
+<link rel="stylesheet" href="dist/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="dist/bootstrap/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="dist/public/css/jquery.jscrollpane.css">
+<script src="dist/public/js/jquery-1.10.2.min.js"></script>
+<script src="dist/bootstrap/js/bootstrap.min.js"></script>
+<script src="dist/public/js/jquery.jscrollpane.min.js"></script>
+<script src="dist/public/js/public.class.js"></script>
+<style>
+.top_body{background:#1f262d; height:40px; position:relative;overflow: hidden;cursor: default;}
+.homeBtn {display: block;float: left;padding: 0 10px;color: #999; height: 40px;font-size: 12px; line-height: 40px;border-left: 1px solid #2e363f;border-right: 1px solid #000;}
+.homeBtn a{}
+.homeBtn>a span{padding-right: 3px;vertical-align: text-top;font-size: 15px;}
+.msg{display: block;float: left;padding: 0 10px;color: #999; height: 40px;line-height: 40px;border-left: 1px solid #2e363f;border-right: 1px solid #000;}
+#menu{float:left;height: 40px;line-height: 40px;}
+#menu>a {
+	float: left;
+	display: block;
+	height: 40px;
+	padding: 0 10px;
+	border-left: 1px solid #2e363f;
+	border-right: 1px solid #000;
+	color: #999;
+}
+#menu>a span{padding-right: 3px;vertical-align: text-top;font-size: 14px;}
+#menu>a:hover{background-color: #1a1a1a;color: #fff;}
+</style>
+</head>
+<body>
+
+<div class="top_body">
+		<div class="homeBtn">
+			<a href="./index.html" title="首页" target="_parent" class="">
+				<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+			</a>
+			SDK管理系统
+
+		</div>
+		<div class="msg">
+			当前用户: admin
+		</div>
+		<div id="menu">
+<!--			<a href="#" target="main"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>修改密码</a>-->
+<!--			<a href="main.jsp" target="main"><span class="glyphicon glyphicon-th" aria-hidden="true"></span>导航地图</a>-->
+			<a href="main.jsp" target="main"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>个人中心</a>
+			<div class="menuBtn btn-group">
+			  <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>个人中心</button>
+			  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<span class="caret"></span>
+				<span class="sr-only">Toggle Dropdown</span>
+			  </button>
+			  <ul class="dropdown-menu">
+				<li><a href="#">Action</a></li>
+				<li><a href="#">Another action</a></li>
+				<li><a href="#">Something else here</a></li>
+				<li role="separator" class="divider"></li>
+				<li><a href="#">Separated link</a></li>
+			  </ul>
+			</div>
+			<a target="main" href="javascript:window.history.back()"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>后退</a>
+			<a target="_top" class="pull-right" href=""><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>退出登录</a>
+		</div>
+	</div>
+</body>
+</html>

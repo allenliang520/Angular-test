@@ -1,0 +1,149 @@
+<div class="ul">
+<!--
+	<div class="menus summary">
+		<div class="menu1 menuBtn" ng-click="menuBtnClick($event)" ng-class="{act: $state.includes('main.summary')}">
+			<span class="icon"></span><span class="arrow"></span>概览
+		</div>
+		<div class="menu_1 menuList" ng-class="{menu_act: $state.includes('main.summary'),show:$state.includes('main.summary')}">
+			<ul class="nav">
+				<li role="presentation" class="" ng-class="{active: $state.includes('main.summary')}">
+					<a href="javascript:void(0);" ui-sref=".summary.index($stateParams)"><span class="leftArow" aria-hidden="true"></span>游戏概况</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="menus players">
+		<div class="menu1 menuBtn" ng-click="menuBtnClick($event)" ng-class="{act: $state.includes('main.players')}">
+			<span class="icon"></span><span class="arrow"></span>游戏玩家
+		</div>
+		<div class="menu_1 menuList" ng-class="{menu_act: $state.includes('main.players'),show:$state.includes('main.players')}">
+			<ul class="nav">
+				<li role="presentation" class="" ng-class="{active: $state.includes('main.players.new')}">
+					<a href="javascript:void(0);" ui-sref=".players.new($stateParams)"><span class="leftArow" aria-hidden="true"></span>新增玩家</a>
+				</li>
+				<li role="presentation" class="" ng-class="{active: $state.includes('main.players.dynamic')}">
+					<a href="javascript:void(0);" ui-sref=".players.dynamic($stateParams)"><span class="leftArow" aria-hidden="true"></span>活跃玩家</a>
+				</li>
+				<li role="presentation" class="" ng-class="{active: $state.includes('main.players.retention')}">
+					<a href="javascript:void(0);" ui-sref=".players.retention($stateParams)"><span class="leftArow" aria-hidden="true"></span>玩家留存</a>
+				</li>
+				<li role="presentation" class="" ng-class="{active: $state.includes('main.players.conversion')}">
+					<a href="javascript:void(0);" ui-sref=".players.conversion($stateParams)"><span class="leftArow" aria-hidden="true"></span>付费转化</a>
+				</li>
+				<li role="presentation" class="" ng-class="{active: $state.includes('main.players.chum')}">
+					<a href="javascript:void(0);" ui-sref=".players.chum($stateParams)"><span class="leftArow" aria-hidden="true"></span>玩家流失</a>
+				</li>
+				<li role="presentation" class="" ng-class="{active: $state.includes('main.players.behavior')}">
+					<a href="javascript:void(0);" ui-sref=".players.behavior($stateParams)"><span class="leftArow" aria-hidden="true"></span>游戏习惯</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="menus concurrent">
+		<div class="menu1 menuBtn" ng-click="menuBtnClick($event)" ng-class="{act: $state.includes('main.concurrent')}" ui-sref=".concurrent">
+			<span class="icon"></span>在线分析
+		</div>
+	</div>
+	<div class="menus levels">
+		<div class="menu1 menuBtn" ng-click="menuBtnClick($event)" ng-class="{act: $state.includes('main.levels')}">
+			<span class="icon"></span><span class="arrow"></span>等级分析
+		</div>
+		<div class="menu_1 menuList" ng-class="{menu_act: $state.includes('main.levels'),show:$state.includes('main.levels')}">
+			<ul class="nav">
+				<li role="presentation" class="" ng-class="{active: $state.includes('main.levels.detail')}">
+					<a href="javascript:void(0);" ui-sref=".levels.detail($stateParams)"><span class="leftArow" aria-hidden="true"></span>等级详细</a>
+				</li>
+				<li role="presentation" class="" ng-class="{active: $state.includes('main.levels.distribute')}">
+					<a href="javascript:void(0);" ui-sref=".levels.distribute($stateParams)"><span class="leftArow" aria-hidden="true"></span>等级分布</a>
+				</li>
+				<li role="presentation" class="" ng-class="{active: $state.includes('main.levels.progress')}">
+					<a href="javascript:void(0);" ui-sref=".levels.progress($stateParams)"><span class="leftArow" aria-hidden="true"></span>新玩家进度</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="menus revenue">
+		<div class="menu1 menuBtn" ng-click="menuBtnClick($event)" ng-class="{act: $state.includes('main.revenue')}">
+			<span class="icon"></span><span class="arrow"></span>收入分析
+		</div>
+		<div class="menu_1 menuList" ng-class="{menu_act: $state.includes('main.revenue'),show:$state.includes('main.revenue')}">
+			<ul class="nav">
+				<li role="presentation" class="" ng-class="{active: $state.includes('main.revenue.data')}">
+					<a href="javascript:void(0);" ui-sref=".revenue.data($stateParams)"><span class="leftArow" aria-hidden="true"></span>收入数据</a>
+				</li>
+				<li role="presentation" class="" ng-class="{active: $state.includes('main.revenue.conversion')}">
+					<a href="javascript:void(0);" ui-sref=".revenue.conversion($stateParams)"><span class="leftArow" aria-hidden="true"></span>付费渗透</a>
+				</li>
+				<li role="presentation" class="" ng-class="{active: $state.includes('main.revenue.newplayervalue')}">
+					<a href="javascript:void(0);" ui-sref=".revenue.newplayervalue($stateParams)"><span class="leftArow" aria-hidden="true"></span>玩家价值</a>
+				</li>
+				<li role="presentation" class="" ng-class="{active: $state.includes('main.revenue.behavior')}">
+					<a href="javascript:void(0);" ui-sref=".revenue.behavior($stateParams)"><span class="leftArow" aria-hidden="true"></span>付费习惯</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="menus virtual">
+		<div class="menu1 menuBtn" ng-click="menuBtnClick($event)" ng-class="{act: $state.includes('main.virtual')}">
+			<span class="icon"></span><span class="arrow"></span>虚拟消费
+		</div>
+		<div class="menu_1 menuList" ng-class="{menu_act: $state.includes('main.virtual'),show:$state.includes('main.virtual')}">
+			<ul class="nav">
+				<li role="presentation" class="" ng-class="{active: $state.includes('main.virtual.currency')}">
+					<a href="javascript:void(0);" ui-sref=".virtual.currency($stateParams)"><span class="leftArow" aria-hidden="true"></span>虚拟币</a>
+				</li>
+				<li role="presentation" class="" ng-class="{active: $state.includes('main.virtual.expense')}">
+					<a href="javascript:void(0);" ui-sref=".virtual.expense($stateParams)"><span class="leftArow" aria-hidden="true"></span>消费喜好</a>
+				</li>
+				<li role="presentation" class="" ng-class="{active: $state.includes('main.virtual.items')}">
+					<a href="javascript:void(0);" ui-sref=".virtual.items($stateParams)"><span class="leftArow" aria-hidden="true"></span>消费点</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="menus whales">
+		<div class="menu1 menuBtn" ng-click="menuBtnClick($event)" ng-class="{act: $state.includes('main.whales')}" ui-sref=".whales">
+			<span class="icon"></span>鲸鱼用户
+		</div>
+	</div>
+	<div class="menus channels">
+		<div class="menu1 menuBtn" ng-click="menuBtnClick($event)" ng-class="{act: $state.includes('main.channels')}">
+			<span class="icon"></span><span class="arrow"></span>推广渠道
+		</div>
+		<div class="menu_1 menuList" ng-class="{menu_act: $state.includes('main.channels'),show:$state.includes('main.channels')}">
+			<ul class="nav">
+				<li role="presentation" class="" ng-class="{active: $state.includes('main.channels.channelsData')}">
+					<a href="javascript:void(0);" ui-sref=".channels.channelsData($stateParams)"><span class="leftArow" aria-hidden="true"></span>渠道数据</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="menus events">
+		<div class="menu1 menuBtn" ng-click="menuBtnClick($event)" ng-class="{act: $state.includes('main.events')}">
+			<span class="icon"></span>自定义事件
+		</div>
+		<div class="menu_1 menuList" ng-class="{menu_act: $state.includes('main.events'),show:$state.includes('main.events')}">
+			<ul class="nav">
+				<li role="presentation" class="" ng-class="{active: $state.includes('main.events.data') || $state.includes('main.events.detail')}">
+					<a href="javascript:void(0);" ui-sref=".events.data($stateParams)"><span class="leftArow" aria-hidden="true"></span>事件数据</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+-->
+	<div class="menus {{data.key}}" ng-repeat="data in data">
+		<div class="menu1 menuBtn" ng-click="menuBtnClick($event)" ng-class="{act: $state.includes('main.'+data.key)}" ui-sref=".{{data.key}}" ng-show="!data.menulist">
+			<span class="icon"></span>{{data.name}}
+		</div>
+		<div class="menu1 menuBtn" ng-click="menuBtnClick($event)" ng-class="{act: $state.includes('main.'+data.key)}" ng-show="data.menulist">
+			<span class="icon"></span>{{data.name}}
+		</div>
+		<div class="menu_1 menuList" ng-class="{menu_act: $state.includes('main.'+data.key),show:$state.includes('main.'+data.key)}" ng-show="data.menulist">
+			<ul class="nav">
+				<li role="presentation" class="" ng-repeat="list in data.menulist" ng-class="{active: $state.includes('main.'+data.key+'.'+list.key) || $state.includes('main.'+data.key+'.'+list.actkey) || $state.includes('main.'+data.key+'.'+list.actkey2)}">
+					<a href="javascript:void(0);" ui-sref=".{{data.key}}.{{list.key}}($stateParams)"><span class="leftArow" aria-hidden="true"></span>{{list.name}}</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

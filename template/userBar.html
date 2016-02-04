@@ -1,0 +1,71 @@
+<div class="top_body">
+	<div class="homeBtn">
+		<a href="index.html" ui-sref=".main({'gameid':''})" title="首页" class="">
+<!--
+			<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+			<p style="display:inline-block" ng-bind="data.indexTitle">SDK管理系统</p>
+-->
+			<img src="dist/images/logo.png" class="logoImg" width="154px" alt="">
+		</a>
+	</div>
+<!--
+	<div class="productMenu menuBtn btn-group  pull-left" ng-show="true">
+
+	</div>
+-->
+	<div id="topMenu">
+		<a target="main" href="javascript:window.history.back()"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>后退</a>
+		<div class="menuBtn btn-group  pull-left">
+			<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Admin <span class="caret"></span>
+				<!--当前登陆用户名称-->
+			</button>
+			<ul class="dropdown-menu">
+				<li><a href="userInfo.html">个人中心</a></li>
+				<li><a href="modifypw.html">修改密码</a></li>
+				<li><a href="login.html">退出登录</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="top_location">
+	<div class="fl">
+		<strong>数据中心</strong>
+		<span></span>
+		<div class="productMenu fl" ng-show="true">
+			<div class="dropselect" ng-class="{'dropselectAct':isdrop}" ng-click="dropToggle()">
+				<h4 title="" class="over">{{getGameName(params.gameid)}}</h4>
+			</div>
+			<ul class="dropselistbox" ng-show="isdrop">
+				<li ng-repeat="gameList in gameList"  ui-sref=".main({'gameid':gameList.id})" ng-click="dropToggle()" >{{gameList.name}}</li>
+			</ul>
+		</div>
+		<span></span>
+		<div class="productMenu fl" ng-show="true" style="width:120px">
+			<div class="dropselect" ng-class="{'dropselectAct':isdrop2}" ng-click="dropToggle2()">
+				<h4 title="" class="over text-center">
+					<img src="dist/images/IOS_icon.png" alt="" ng-show="gameSystemChoosed['1']">
+					<img src="dist/images/Android_icon.png" alt="" ng-show="gameSystemChoosed['2']">
+					<img src="dist/images/Win_icon.png" alt="" ng-show="gameSystemChoosed['3']">
+				</h4>
+			</div>
+			<ul class="dropselistbox" ng-show="isdrop2">
+				<li ng-click="gameSystem.android=!gameSystem.android">
+					<input type="checkbox" ng-checked="gameSystem.android" >
+					Android
+				</li>
+				<li ng-click="gameSystem.ios=!gameSystem.ios">
+					<input type="checkbox" ng-checked="gameSystem.ios" >
+					Ios
+				</li>
+				<li ng-click="gameSystem.win=!gameSystem.win">
+					<input type="checkbox" ng-checked="gameSystem.win" >
+					Winphone
+				</li>
+				<li>
+					<div style="clear: both; display:block; float:left; background:#154f72; padding:0 30px; line-height:24px; margin:0px 0 0 2px; border-radius:2px; cursor:pointer; font-size:12px; " ng-click="setGameSys()">确定</div>
+				</li>
+			</ul>
+		</div
+	</div>
+</div>

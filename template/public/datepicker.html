@@ -1,0 +1,27 @@
+<div id="timeSelect">
+    <div class="input-group" ng-click="show()">
+    	<input type="text" class="form-control input-md" ng-model="inputValue"/>
+		<span class="input-group-addon">
+			<span class="glyphicon glyphicon-calendar"></span>
+		</span>
+	</div>
+	<div class="timeDialog">
+		<div class="timeTitle">
+			<span ng-click="selectTime(0)">今日</span><span>|</span>
+			<span ng-click="selectTime(-1)">昨天</span><span>|</span>
+			<span ng-click="selectTime(7)">近7日</span><span>|</span>
+			<span ng-click="selectTime(30)">近30日</span><span>|</span>
+			<span>全部</span>
+		</div>
+		<div class="timeCon" id="datetimepicker">
+			<span>从：</span>
+			<input type="text" id="startTime" class="form-control input-sm" ng-model="startTime" placeholder="" >
+			<span>到：</span>
+			<input type="text" id="endTime" class="form-control input-sm" ng-model="endTime" placeholder="">
+		</div>
+		<div class="timeFooter">
+			<div class="dialogBtn timeBtnQd dialogBtnQd" ng-click="qd($event)">确定</div>
+			<div class="dialogBtn timeBtnQx dialogBtnQx" ng-click="hide($event)">取消</div>
+		</div>
+	</div>
+</div>

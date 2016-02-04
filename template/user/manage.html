@@ -1,0 +1,73 @@
+<div>
+	<div>
+		<div class="form-group">
+			<label for="">用户名:</label>
+			<input type="text" class="form-control" placeholder="用户名" ng-model="searchData.name">&nbsp;&nbsp;
+			<label for="">真实姓名:</label>
+			<input type="text" class="form-control" placeholder="真实姓名" ng-model="searchData.realname">&nbsp;&nbsp;
+			<label for="">所属角色:</label>
+			<select name="" id="" class="form-control" >
+				<option value="0">全部</option>
+				<option value="1">呵呵</option>
+			</select>
+			<button class="btn btn-default">搜索</button>
+			<a class="btn btn-default" ui-sref="main.user.modif">添加用户</a>
+		</div>
+	</div>
+	<div class="panel panel-default panel_1">
+		<div class="panel-heading">
+			<strong>
+				用户列表
+				<!--------提示框----------->
+			</strong>
+			<div class="panel_downloadBtn" ng-click="mdownloaddata('avgGameTime')"></div>
+			<!--------下载按钮----------->
+			<div class="clear"></div>
+		</div>
+		<div class="<panel-bo></panel-bo>dy pdlf pdtb">
+			<div class="tableBox">
+				<table class="table table-striped">
+					<tr>
+						<th class="text-center" width="14%">用户名</th>
+						<th class="text-center" width="14%">真实姓名</th>
+						<th class="text-center" width="14%">角色列表</th>
+						<th class="text-center" width="14%">部门</th>
+						<th class="text-center" width="14%">电话</th>
+						<th class="text-center" width="14%">最后一次登录时间</th>
+						<th class="text-center" width="14%">操作</th>
+					</tr>
+					<tr ng-repeat="data in panel_1.dataList_1.data  | orderBy: panel_1.dataList_1.orderBy.t+panel_1.dataList_1.orderBy.s | pageStartFrom : panel_1.dataList_1.limit.now*panel_1.dataList_1.limit.max | limitTo: panel_1.dataList_1.limit.max" class="text-center">
+						<td>{{data.name}}</td>
+						<td>{{data.realName}}</td>
+						<td>{{data.role}}</td>
+						<td>{{data.department}}</td>
+						<td>{{data.tel}}</td>
+						<td>{{data.lastLoginTime}}</td>
+						<td>
+							<a href="javascript:;" ui-sref="main.user.modif({'userId':123})">修改</a>
+							<a href="javascript:;" ng-click="delUser(data.id)">删除</a>
+							<a href="javascript:;"  ui-sref="main.user.resources({'userId':123})">资源</a>
+						</td>
+					</tr>
+				</table>
+				<div class="tableFooter">
+					<div class="buttondiv fl" analysisdrop changei="changetype()">
+						<div class="selectlable fl">每页显示：</div>
+						<div class="analysisdrop fl" style="width:60px;">
+							<div class="hadchoose">
+								<h6>{{val}}</h6></div>
+							<ul class="dropUl">
+								<li ng-click="c('10');changetype(10)">10</li>
+								<li ng-click="c('20');changetype(20)">20</li>
+								<li ng-click="c('50');changetype(50)">50</li>
+								<li ng-click="c('100');changetype(100)">100</li>
+							</ul>
+						</div>
+						<div class="selectlable fl">&nbsp;&nbsp;条记录</div>
+					</div>
+					<div class="dataTables_paginate fr" datatableslimit  datalimit="panel_1.dataList_1.limit"  tabledata="panel_1.dataList_1.data"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title></title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="dist/public/css/public.css">
+<link rel="stylesheet" href="dist/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="dist/bootstrap/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="dist/public/css/jquery.jscrollpane.css">
+<script src="dist/public/js/jquery-1.10.2.min.js"></script>
+<script src="dist/bootstrap/js/bootstrap.min.js"></script>
+<script src="dist/public/js/jquery.jscrollpane.min.js"></script>
+<script src="dist/public/js/public.class.js"></script>
+<style>
+*{padding: 0;margin: 0;}
+#all{width: 100%;height: 100%;background-color: #2E363F; position: absolute;}
+.logo{height: 77px;line-height: 77px; display: block;text-align: center;}
+.menuBtn{display: block;padding: 10px 15px;color: #fff;cursor: pointer;border-top: 1px solid #37414b;border-bottom: 1px solid #1f262d; border-left: 1px solid transparent;transition: background-color .4s , border-top.4s}
+/*.menu1:hover{background-color:#27a9e3;}*/
+.menuBtn span{font-size: 12px;}
+.menuList .menuBtn{text-indent: .5em;font-size: 13px;color: #939da8;border-bottom: none;}
+#guonei>div{}
+/*#guonei>div:first-child .menu1{border-top: 1px solid #14487C;}*/
+.act{color: #fff; /*background-color:#27a9e3;*/border-top: 1px solid #14487C;}
+/*.act:hover{background-color:#27a9e3;}*/
+.glyphicon{margin-right: 5px;}
+.menuBtn .glyphicon-minus{display: none;}
+.act .glyphicon-plus{display: none;}
+.act .glyphicon-minus{display: inline-block;}
+.menu1{background-color: #2E363F;}
+.menu_1{background-color: #37414d}
+.menu_1 a{text-indent: .5em;font-size: 13px;color: #939da8;border-radius: 0px; outline: none;border-left: 3px solid transparent;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+body .menu_1 .nav  a:hover{background-color: transparent;color: #fff;}
+body .menu_1 .nav  a:focus{background-color: transparent;color: #fff;}
+body .menu_1 .nav .active>a:hover{background-color: #f4f4f4;}
+body .menu_1 .nav .active>a{background-color: #f4f4f4;border-left: 3px solid red;border-radius: 0px;color: #343434;box-sizing: border-box;}
+
+.menu_1	.menu_2{background-color: #41464d;}
+.menu_1 .menu_2 a{text-indent: 1em;}
+body .menu_1 .nav .active .menuList a{}
+</style>
+
+</head>
+<body>
+	<div id="all">
+		<a href="http://www.good321.net" target="_blank" class="logo"><img src="dist/images/logo.png" width="80%" alt=""></a>
+		<div class="menus">
+			<div class="menu1 menuBtn"> 	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 	<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>产品信息</div>
+<!--
+			<div class="menu_1 menuList">
+				<ul class="nav nav-pills nav-stacked">
+					<li role="presentation" class="">
+						<a href="template/product/productList.html" target="main"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>产品列表</a>
+					</li>
+					<li role="presentation" class="">
+						<a href="template/product/signList.html" target="main"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Android签名管理</a>
+					</li>
+				</ul>
+			</div>
+-->
+		</div>
+		<div class="menus">
+			<div class="menu1 menuBtn"> 	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 	<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>游戏包维护</div>
+<!--
+			<div class="menu_1 menuList">
+				<ul class="nav nav-pills nav-stacked">
+					<li role="presentation" class="">
+						<a href="template/pocket/pocketList.html" target="main"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>游戏包列表</a>
+					</li>
+					<li role="presentation" class="">
+						<a href="template/pocket/addPocket.html" target="main"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>添加游戏包</a>
+					</li>
+				</ul>
+			</div>
+-->
+		</div>
+		<div class="menus">
+			<div class="menu1 menuBtn"> 	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 	<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>渠道管理</div>
+<!--
+			<div class="menu_1 menuList">
+				<ul class="nav nav-pills nav-stacked">
+					<li role="presentation" class="">
+						<a href="template/channel/channelList.html" target="main"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>渠道列表</a>
+					</li>
+					<li role="presentation" class="">
+						<a href="template/channel/addChannel.html" target="main"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>添加渠道</a>
+					</li>
+				</ul>
+			</div>
+-->
+		</div>
+		<div class="menus">
+			<div class="menu1 menuBtn"> 	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 	<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>打包管理</div>
+<!--
+			<div class="menu_1 menuList">
+				<ul class="nav nav-pills nav-stacked">
+					<li role="presentation" class="">
+						<a href="template/unpack/packList.html" target="main"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>打包任务列表</a>
+					</li>
+					<li role="presentation" class="">
+						<a href="template/unpack/addUnpack.html" target="main"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>打包任务添加</a>
+					</li>
+				</ul>
+			</div>
+-->
+		</div>
+<!--
+		<div class="menus">
+			<div class="menu1 menuBtn"> 	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 	<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>GM后台</div>
+			<div class="menu_1 menuList">
+				<ul class="nav nav-pills nav-stacked">
+					<li role="presentation" class="">
+						<div class="menu2 menuBtn">
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+							激活码
+						</div>
+						<div class="menu_2 menuList">
+							<ul class="nav nav-pills nav-stacked">
+								<li role="presentation" class="">
+									<a href="/xuanyuan/gm/activation.jsp" target="main"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>礼包激活码</a>
+								</li>
+								<li role="presentation" class="">
+									<a href="/xuanyuan/gm/accactivation.jsp" target="main"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>账号激活码</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+-->
+<!--
+		<div class="menus">
+			<div class="menu1 menuBtn"> 	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 	<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>使用说明</div>
+			<div class="menu_1 menuList">
+				<ul class="nav nav-pills nav-stacked">
+					<li role="presentation" class="">
+						<a href="template/help/use.html" target="main"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>使用流程</a>
+					</li>
+					<li role="presentation" class="">
+						<a href="template/help/download.html" target="main"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>下载</a>
+					</li>
+					<li role="presentation" class="">
+						<a href="template/help/technologyAccess.html" target="main"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>技术接入</a>
+					</li>
+					<li role="presentation" class="">
+						<a href="template/help/faq.html" target="main"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>常见问题</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+-->
+	</div>
+</body>
+<script>
+//	$(".menu2").each(function(){
+//		var em = $(this).next(".menuList");
+//		em.height(em.height()).css("display","none");
+//	})
+//	$(".menu1").each(function(){
+//		var em = $(this).next(".menuList");
+//		em.height(em.height()).css("display","none");
+//	})
+	$(document).ready(function(){
+		var btns=document.getElementsByClassName("menus");
+		for(var i=0;i<btns.length;i++){
+			unselect(btns[i])
+		}
+	});
+	$(".menuList").each(function(){
+		$(this).css("display","none");
+	})
+	$(".menuBtn").on("click",function(){
+		if($(this).next().hasClass("menu_act"))
+		{
+			if($(this).next().find(".active").length==1)
+			{
+				//return;
+			}
+			$(this).removeClass("act");
+			$(this).next().slideUp(200,function(){
+					$(this).removeClass("menu_act");
+				});
+			return ;
+
+		}
+		/*
+		$(".menu_act").each(function(){
+			if($(this).find(".active").length==0)
+			{
+				$(this).prev().removeClass("act");
+				$(this).slideUp(function(){
+					$(this).removeClass("menu_act");
+				});
+			}
+		})*/
+		$(this).addClass("act").next().addClass("menu_act").slideDown(200);
+	});
+	$(".nav").on("click","li",function(){
+		if($(this).find(".menuList").length!=0)
+		{
+
+		}
+		else{
+			$(".nav .active").removeClass("active");
+			$(this).addClass("active");
+			return;
+			$(".menu_act").each(function(){
+			if($(this).find(".active").length==0)
+				{
+					$(this).slideUp(200,function(){
+						$(this).removeClass("menu_act");
+					});
+				}
+			})
+		}
+
+	})
+
+	this.clearActive=function(){$(".nav .active").removeClass("active");}
+
+	$(document).ready(function () {
+		$("#all").jScrollPane({autoReinitialise: true,stickToBottom: true});
+		/*var act=setInterval(function(){
+			var o = $(".jspPane");
+			if(o){
+				o.width()==180?o.css("margin-left",0):o;
+			}
+		},500);*/
+	});
+</script>
+</html>
+

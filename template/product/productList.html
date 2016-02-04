@@ -1,0 +1,119 @@
+
+		<style>
+		.addBtn{display: block; width:251.6px;height:55px;color: #fff; background-color: #27a9e3;font-size: 16px;text-align: center;line-height: 55px; margin: 1.1875em auto;cursor: pointer;border-radius: 5px;}
+		.addBtn:hover{background-color: #1f9fd8;text-decoration: none;color: #fff;}
+		table p{margin: 0;}
+		body .pagination a:focus{background-color: transparent;}
+		body .pagination .pageOn{color: #b2b2b2}
+		body .pagination .pageOn:hover{color: #b2b2b2;background-color: transparent;cursor: default;}
+		</style>
+		<div class="main" ng-controller="productListController">
+			<div class="location">您当前位置： 产品列表</div>
+			<br>
+			<div class="container">
+				<a href="productCreate" ui-sref="productCreate" class="addBtn">创建产品 <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						产品列表
+						<div class="clear"></div>
+					</div>
+					<div class="panel-body">
+						<table class="table table-bordered text-center">
+							<tr>
+								<th>
+									<div class="form-group" style="display:inline-block;margin:0;">
+										产品
+										<input type="text" class="form-control input-sm" style="width:120px;display:inline-block" placeholder="搜索" ng-model="search" ng-change="change()"><span class="input-group-btn" style="display:inline-block"><button class="btn btn-default btn-sm" type="button">搜索</button></span>
+									</div>
+								</th>
+								<th>
+									<a href="">接入状态</a>
+								</th>
+								<th>
+									<a href="" ng-show="orderBy=='playerSum'" ui-sref="main.product.list({'orderBy':'-playerSum'})">累计玩家</a>
+									<a href="" ng-show="orderBy=='-playerSum'" ui-sref="main.product.list({'orderBy':'playerSum'})">累计玩家</a>
+									<a href="" ng-show="orderBy!='-playerSum'&&orderBy!='playerSum'" ui-sref="main.product.list({'orderBy':'-playerSum'})">累计玩家</a>
+									<a href="" ng-show="orderBy=='-playerSum'" ui-sref="main.product.list({'orderBy':'playerSum'})"><span class="glyphicon glyphicon-triangle-bottom"></a>	<!--降序图标-->
+									<a href="" ng-show="orderBy=='playerSum'" ui-sref="main.product.list({'orderBy':'-playerSum'})"><span class="glyphicon glyphicon-triangle-top"></a>	<!--升序序图标-->
+								</th>
+								<th>
+									<a href="" ng-show="orderBy=='incomeSum'" ui-sref="main.product.list({'orderBy':'-incomeSum'})">累计收入</a>
+									<a href="" ng-show="orderBy=='-incomeSum'" ui-sref="main.product.list({'orderBy':'incomeSum'})">累计收入</a>
+									<a href="" ng-show="orderBy!='-incomeSum'&&orderBy!='incomeSum'" ui-sref="main.product.list({'orderBy':'-incomeSum'})">累计收入</a>
+									<a href="" ng-show="orderBy=='-incomeSum'" ui-sref="main.product.list({'orderBy':'incomeSum'})"><span class="glyphicon glyphicon-triangle-bottom"></a>	<!--降序图标-->
+									<a href="" ng-show="orderBy=='incomeSum'" ui-sref="main.product.list({'orderBy':'-incomeSum'})"><span class="glyphicon glyphicon-triangle-top"></a>	<!--升序序图标-->
+								</th>
+								<th>
+									<a href="" ng-show="orderBy=='payingPlayerSum'" ui-sref="main.product.list({'orderBy':'-payingPlayerSum'})">累计付费玩家</a>
+									<a href="" ng-show="orderBy=='-payingPlayerSum'" ui-sref="main.product.list({'orderBy':'payingPlayerSum'})">累计付费玩家</a>
+									<a href="" ng-show="orderBy!='-payingPlayerSum'&&orderBy!='payingPlayerSum'" ui-sref="main.product.list({'orderBy':'-payingPlayerSum'})">累计付费玩家</a>
+									<a href="" ng-show="orderBy=='-payingPlayerSum'" ui-sref="main.product.list({'orderBy':'payingPlayerSum'})"><span class="glyphicon glyphicon-triangle-bottom"></a>	<!--降序图标-->
+									<a href="" ng-show="orderBy=='payingPlayerSum'" ui-sref="main.product.list({'orderBy':'-payingPlayerSum'})"><span class="glyphicon glyphicon-triangle-top"></a>	<!--升序序图标-->
+								</th>
+								<th>
+									<a href="" ng-show="orderBy=='channelOnlineSum'" ui-sref="main.product.list({'orderBy':'-channelOnlineSum'})">上线渠道数</a>
+									<a href="" ng-show="orderBy=='-channelOnlineSum'" ui-sref="main.product.list({'orderBy':'channelOnlineSum'})">上线渠道数</a>
+									<a href="" ng-show="orderBy!='-channelOnlineSum'&&orderBy!='channelOnlineSum'" ui-sref="main.product.list({'orderBy':'-channelOnlineSum'})">上线渠道数</a>
+									<a href="" ng-show="orderBy=='-channelOnlineSum'" ui-sref="main.product.list({'orderBy':'channelOnlineSum'})"><span class="glyphicon glyphicon-triangle-bottom"></a>	<!--降序图标-->
+									<a href="" ng-show="orderBy=='channelOnlineSum'" ui-sref="main.product.list({'orderBy':'-channelOnlineSum'})"><span class="glyphicon glyphicon-triangle-top"></a>	<!--升序序图标-->
+								</th>
+								<th>
+									<a href="" ng-show="orderBy=='channelSum'" ui-sref="main.product.list({'orderBy':'-channelSum'})">全部渠道数</a>
+									<a href="" ng-show="orderBy=='-channelSum'" ui-sref="main.product.list({'orderBy':'channelSum'})">全部渠道数</a>
+									<a href="" ng-show="orderBy!='-channelSum'&&orderBy!='channelSum'" ui-sref="main.product.list({'orderBy':'-channelSum'})">全部渠道数</a>
+									<a href="" ng-show="orderBy=='-channelSum'" ui-sref="main.product.list({'orderBy':'channelSum'})"><span class="glyphicon glyphicon-triangle-bottom"></a>	<!--降序图标-->
+									<a href="" ng-show="orderBy=='channelSum'" ui-sref="main.product.list({'orderBy':'-channelSum'})"><span class="glyphicon glyphicon-triangle-top"></a>	<!--升序序图标-->
+								</th>
+							</tr>
+							<tr ng-repeat="productListData in productListData.list | filter:search    | orderBy:orderBy | pageStartFrom : paging.p*paging.listLen | limitTo: paging.listLen">
+								<td width="20.45%">
+									<a href="productDetail.html" ui-sref='main.product.detail({id:{{productListData.id}},type:1})'>
+										<img src="" width="50" height="50" alt=""> {{productListData.name}}
+									</a>
+								</td>
+								<td>
+									<p for="">android接入中...</p>
+									<p for="">ios接入中...</p>
+								</td>
+								<td>
+									{{productListData.playerSum}}
+								</td>
+								<td>
+									{{productListData.incomeSum}}
+								</td>
+								<td>
+									{{productListData.payingPlayerSum}}
+								</td>
+								<td>
+									{{productListData.channelOnlineSum}}
+								</td>
+								<td>
+									{{productListData.channelSum}}
+								</td>
+							</tr>
+						</table>
+						<nav class="text-center">
+						  <ul class="pagination">
+							<li>
+							  <a href="javascript:;" ng-click="paging.jump(paging.p-1);p();" ng-hide="paging.p <= 0" aria-label="Previous">
+								<span aria-hidden="true">&laquo;</span>
+							  </a>
+							</li>
+							<li><a href="javascript:;"  ng-click="paging.jump(paging.p-3);p();" ng-hide="paging.p -3< 0">{{paging.p-2}}</a></li>
+							<li><a href="javascript:;"  ng-click="paging.jump(paging.p-2);p();" ng-hide="paging.p -2< 0">{{paging.p-1}}</a></li>
+							<li><a href="javascript:;"  ng-click="paging.jump(paging.p-1);p();" ng-hide="paging.p-1 < 0">{{paging.p}}</a></li>
+							<li><a href="javascript:;" class="pageOn" ng-disabled="true">{{paging.p+1}}</a></li>
+							<li><a href="javascript:;"  ng-click="paging.jump(paging.p+1);p();" ng-hide="paging.p +1> paging.pSize">{{paging.p+2}}</a></li>
+							<li><a href="javascript:;"  ng-click="paging.jump(paging.p+2);p();" ng-hide="paging.p +2> paging.pSize">{{paging.p+3}}</a></li>
+							<li><a href="javascript:;"  ng-click="paging.jump(paging.p+3);p();" ng-hide="paging.p +3> paging.pSize">{{paging.p+4}}</a></li>
+							<li>
+							  <a href="javascript:;" ng-click="paging.jump(paging.p+1);p();" ng-hide="paging.p >= paging.pSize" aria-label="Next">
+								<span aria-hidden="true">&raquo;</span>
+							  </a>
+							</li>
+						  </ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>

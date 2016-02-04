@@ -1,0 +1,627 @@
+<div>
+	<div class="maintop">
+		<div datepicker class="col-xs-3 timeSelect" mstatdate="mstatdate">
+		</div>
+	</div>
+	<div class="panel panel-default panel_1">
+		<div class="panel-heading">
+			<strong class="fl">
+				渠道数据
+				<div class="exp-box">
+					<em class="icon-exp">三角图标</em>
+					<div class="noun-exp" style="width:300px;">
+					</div>
+				</div>
+				<!--------提示框----------->
+			</strong>
+			<div class="titleTabs fl margin_left"   >
+	            <a  class="tagbut" ng-class="{'tagbutAct':tabsbtn==0}"  ng-click="tabsbtn=0">数量指标</a>
+	            <a  class="tagbut" ng-class="{'tagbutAct':tabsbtn==1}"  ng-click="tabsbtn=1">质量指标</a>
+	            <a  class="tagbut" ng-class="{'tagbutAct':tabsbtn==2}"  ng-click="tabsbtn=2">收入指标</a>
+			</div>
+		<!--------tab选择按钮----------->
+			<div class="panel_downloadBtn" ng-click="mdownloaddata('avgGameTime')"></div>
+			<!--------下载按钮----------->
+			<div class="clear"></div>
+		</div>
+		<div class="panel-body pdlf pdtb">
+			<div class="tableList" ng-class="({'tableListAct':tabsbtn==0})">
+				<ul class="tableListUl">
+					<li class="tableListLi tableListLiTh clear">
+						<span class="tableListTh">
+							<strong>渠道名称</strong>
+						</span>
+						<span class="tableListTh">
+							<strong>跟踪方式</strong>
+						</span>
+						<span class="tableListTh">
+							<strong>设备激活</strong>
+						</span>
+						<span class="tableListTh">
+							<strong>新增玩家（注册）</strong>
+						</span>
+						<span class="tableListTh">
+							<strong>注册转化率</strong>
+						</span>
+						<span class="tableListTh">
+							<strong>渠道比重</strong>
+						</span>
+						<span class="tableListTh">
+							<strong>详情</strong>
+						</span>
+					</li>
+					<li class="tableListLi clear" ng-repeat="data in channelsListData" ng-class="({'show_panel':data.show_panel})">
+						<div class="channelTr clear">
+							<span class="channelTd">
+								{{data.channel}}
+							</span>
+							<span class="channelTd">
+								{{data.trackMode}}
+							</span>
+							<span class="channelTd">
+								{{data.devices}}
+							</span>
+							<span class="channelTd">
+								{{data.newPlayers}}
+							</span>
+							<span class="channelTd">
+								{{data.regConv}}%
+							</span>
+							<span class="channelTd">
+								<div class="ProgressBar rela"><span style="width:{{data.proportion}}%"></span><font>{{data.proportion}}%</font></div>
+						</span>
+						<span class="channelTd show_panel_btn">
+								<p ng-click="showPanel(data,$event)" ng-show="!data.show_panel">趋势</p>
+								<p ng-click="data.show_panel=false;" ng-show="data.show_panel">收起</p>
+							</span>
+			</div>
+			<div class="showData">
+				<div class="panel-body" ng-class="{'table':data.model=='table','graph':data.model=='graph'}">
+					<ul class="nav nav-tabs fl cl" navtabs>
+					  <li role="presentation" class="active"><a href="javascript:void(0);">设备激活</a></li>
+					  <li role="presentation" class=""><a href="javascript:void(0);">新增玩家</a></li>
+					  <li role="presentation" class=""><a href="javascript:void(0);">日活跃</a></li>
+					  <li role="presentation" class=""><a href="javascript:void(0);">收入</a></li>
+					  <li role="presentation" class=""><a href="javascript:void(0);">日付费人数</a></li>
+					  <li role="presentation" class=""><a href="javascript:void(0);">ARPU（日）</a></li>
+					</ul>
+					<div class="clear"></div>
+					<div class="panel-showData">
+						<div class="dataList dataList2 dataList_1 dataListAct">
+							<div class="dataGraph">
+								<div class="graph" data="dataList_graph" data-index="{{$index}}" data-data="channelsListData" data-list="1" name="设备激活"></div>
+								<div class="graphLimit" graphLimit datalimit="data.dataList_1.graphLimit" graphdata="data.trend.devices" graphfun="graphfun.dataList_graph" model="data.model" name="设备激活" hastarget="true" isfist="false" key="{d:'value',y:'item'}">
+								</div>
+							</div>
+							<div class="dataTable">
+								<table class="table table-bordered text-center">
+									<tr class="tableTr">
+										<th width='50%' ng-click="changeOrderBy(data.dataList_1,'item')">日期</th>
+										<th width='50%' ng-click="changeOrderBy(data.dataList_1,'value')">设备激活(台)</th>
+									</tr>
+									<tr ng-repeat="value in data.trend.devices | orderBy: data.dataList_1.orderBy.t+data.dataList_1.orderBy.s | pageStartFrom : data.dataList_1.limit.now*data.dataList_1.limit.max | limitTo: data.dataList_1.limit.max">
+										<td>{{value.item}}</td>
+										<td>{{value.value}}</td>
+									</tr>
+								</table>
+								<div class="tableLimit" tablelimit datalimit="data.dataList_1.limit"  index="0" tabledata="data.trend.devices">
+								</div>
+							</div>
+						</div>
+						<div class="dataList dataList2 dataList_2">
+							<div class="dataGraph">
+								<div class="graph" data="dataList_graph" data-index="{{$index}}"  data-data="channelsListData" data-list="2" name="新增玩家"></div>
+								<div class="graphLimit" graphLimit datalimit="data.dataList_2.graphLimit" graphdata="data.trend.newPlayers" graphfun="graphfun.dataList_graph" model="data.model" name="新增玩家" hastarget="true" isfist="false" key="{d:'value',y:'item'}">
+								</div>
+							</div>
+							<div class="dataTable">
+								<table class="table table-bordered text-center">
+									<tr class="tableTr">
+										<th width='50%' ng-click="changeOrderBy(data.dataList_2,'item')">日期</th>
+										<th width='50%' ng-click="changeOrderBy(data.dataList_2,'value')">新增玩家(账户)</th>
+									</tr>
+									<tr ng-repeat="value in data.trend.newPlayers | orderBy: data.dataList_2.orderBy.t+data.dataList_2.orderBy.s | pageStartFrom : data.dataList_2.limit.now*data.dataList_2.limit.max | limitTo: data.dataList_2.limit.max">
+										<td>{{value.item}}</td>
+										<td>{{value.value}}</td>
+									</tr>
+								</table>
+								<div class="tableLimit" tablelimit datalimit="data.dataList_2.limit"  index="1" tabledata="data.trend.newPlayers">
+								</div>
+							</div>
+						</div>
+						<div class="dataList dataList2 dataList_3">
+							<div class="dataGraph">
+								<div class="graph" data="dataList_graph" data-index="{{$index}}" data-data="channelsListData" data-list="3" name="日活跃"></div>
+								<div class="graphLimit" graphLimit datalimit="data.dataList_3.graphLimit" graphdata="data.trend.dailyActive" graphfun="graphfun.dataList_graph" model="data.model" name="日活跃" hastarget="true" isfist="false" key="{d:'value',y:'item'}">
+								</div>
+							</div>
+							<div class="dataTable">
+								<table class="table table-bordered text-center">
+									<tr class="tableTr">
+										<th width='50%' ng-click="changeOrderBy(data.dataList_3,'item')">日期</th>
+										<th width='50%' ng-click="changeOrderBy(data.dataList_3,'value')">日活跃(账户数)</th>
+									</tr>
+									<tr ng-repeat="value in data.trend.dailyActive | orderBy: data.dataList_3.orderBy.t+data.dataList_3.orderBy.s | pageStartFrom : data.dataList_3.limit.now*data.dataList_3.limit.max | limitTo: data.dataList_3.limit.max">
+										<td>{{value.item}}</td>
+										<td>{{value.value}}</td>
+									</tr>
+								</table>
+								<div class="tableLimit" tablelimit datalimit="data.dataList_3.limit" tabledata="data.trend.dailyActive">
+								</div>
+							</div>
+						</div>
+						<div class="dataList dataList2 dataList_4">
+							<div class="dataGraph">
+								<div class="graph" data="dataList_graph" data-index="{{$index}}" data-data="channelsListData" data-list="4" name="收入"></div>
+								<div class="graphLimit" graphLimit datalimit="data.dataList_4.graphLimit" graphdata="data.trend.income" graphfun="graphfun.dataList_graph" model="data.model" name="收入" hastarget="true" isfist="false" key="{d:'value',y:'item'}">
+								</div>
+							</div>
+							<div class="dataTable">
+								<table class="table table-bordered text-center">
+									<tr class="tableTr">
+										<th width='50%' ng-click="changeOrderBy(data.dataList_4,'item')">日期</th>
+										<th width='50%' ng-click="changeOrderBy(data.dataList_4,'value')">收入(￥)</th>
+									</tr>
+									<tr ng-repeat="value in data.trend.income | orderBy: data.dataList_4.orderBy.t+data.dataList_4.orderBy.s | pageStartFrom : data.dataList_4.limit.now*data.dataList_4.limit.max | limitTo: data.dataList_4.limit.max">
+										<td>{{value.item}}</td>
+										<td>{{value.value}}</td>
+									</tr>
+								</table>
+								<div class="tableLimit" tablelimit datalimit="data.dataList_4.limit" tabledata="data.trend.income">
+								</div>
+							</div>
+						</div>
+						<div class="dataList dataList2 dataList_5">
+							<div class="dataGraph">
+								<div class="graph" data="dataList_graph" data-index="{{$index}}" data-data="channelsListData" data-list="5" name="日付费人数"></div>
+								<div class="graphLimit" graphLimit datalimit="data.dataList_5.graphLimit" graphdata="data.trend.dailyPaidPlayers" graphfun="graphfun.dataList_graph" model="data.model" name="日付费人数" hastarget="true" isfist="false" key="{d:'value',y:'item'}">
+								</div>
+							</div>
+							<div class="dataTable">
+								<table class="table table-bordered text-center">
+									<tr class="tableTr">
+										<th width='50%' ng-click="changeOrderBy(data.dataList_5,'item')">日期</th>
+										<th width='50%' ng-click="changeOrderBy(data.dataList_5,'value')">日付费人数(账户数)</th>
+									</tr>
+									<tr ng-repeat="value in data.trend.dailyPaidPlayers | orderBy: data.dataList_5.orderBy.t+data.dataList_5.orderBy.s | pageStartFrom : data.dataList_5.limit.now*data.dataList_5.limit.max | limitTo: data.dataList_5.limit.max">
+										<td>{{value.item}}</td>
+										<td>{{value.value}}</td>
+									</tr>
+								</table>
+								<div class="tableLimit" tablelimit datalimit="data.dataList_5.limit" tabledata="data.trend.dailyPaidPlayers">
+								</div>
+							</div>
+						</div>
+						<div class="dataList dataList2 dataList_6">
+							<div class="dataGraph">
+								<div class="graph" data="dataList_graph" data-index="{{$index}}" data-data="channelsListData" data-list="6" name="ARPU（日）"></div>
+								<div class="graphLimit" graphLimit datalimit="data.dataList_6.graphLimit" graphdata="data.trend.ARPU" graphfun="graphfun.dataList_graph" model="data.model" name="ARPU（日）" hastarget="true" isfist="false" key="{d:'value',y:'item'}">
+								</div>
+							</div>
+							<div class="dataTable">
+								<table class="table table-bordered text-center">
+									<tr class="tableTr">
+										<th width='50%' ng-click="changeOrderBy(data.dataList_6,'item')">日期</th>
+										<th width='50%' ng-click="changeOrderBy(data.dataList_6,'value')">（￥）ARPU（日）</th>
+									</tr>
+									<tr ng-repeat="value in data.trend.ARPU | orderBy: data.dataList_6.orderBy.t+data.dataList_6.orderBy.s | pageStartFrom : data.dataList_6.limit.now*data.dataList_6.limit.max | limitTo: data.dataList_6.limit.max">
+										<td>{{value.item}}</td>
+										<td>{{value.value}}</td>
+									</tr>
+								</table>
+								<div class="tableLimit" tablelimit datalimit="data.dataList_6.limit" tabledata="data.trend.ARPU">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="panel-changeData" graphtbale graphfun="graphfun" datachange="panel_change" datalimit="data.dataList_1.limit" model="data.model">
+					</div>
+					<!-------------图表表格切换，graphfun ----datachange(需要分页时删除不填)------------->
+				</div>
+			</div>
+			</li>
+				</ul>
+			</div>
+			<div class="tableList" ng-class="({'tableListAct':tabsbtn==1})">
+				<ul class="tableListUl">
+					<li class="tableListLi tableListLiTh clear">
+						<span class="tableListTh">
+							<strong>渠道名称</strong>
+						</span>
+						<span class="tableListTh">
+							<strong>跟踪方式</strong>
+						</span>
+						<span class="tableListTh">
+							<strong>平均日活跃(%)</strong>
+						</span>
+						<span class="tableListTh">
+							<strong>一日玩家比例</strong>
+						</span>
+						<span class="tableListTh">
+							<strong>平均次日留存率</strong>
+						</span>
+						<span class="tableListTh">
+							<strong>首周付费比例</strong>
+						</span>
+						<span class="tableListTh">
+							<strong>详情</strong>
+						</span>
+					</li>
+					<li class="tableListLi clear" ng-repeat="data in channelDataQuality" ng-class="({'show_panel':data.show_panel})">
+						<div class="channelTr clear">
+							<span class="channelTd">
+								{{data.channel}}
+							</span>
+							<span class="channelTd">
+								{{data.trackMode}}
+							</span>
+							<span class="channelTd">
+								{{data.dailyActive}}
+							</span>
+							<span class="channelTd">
+								{{data.oneDayPlayer}}
+							</span>
+							<span class="channelTd">
+								{{data.retention}}%
+							</span>
+							<span class="channelTd">
+								{{data.firstWeekConv}}%
+						</span>
+						<span class="channelTd show_panel_btn">
+								<p ng-click="showPanel(data,$event)" ng-show="!data.show_panel">趋势</p>
+								<p ng-click="data.show_panel=false;" ng-show="data.show_panel">收起</p>
+							</span>
+			</div>
+			<div class="showData">
+				<div class="panel-body" ng-class="{'table':data.model=='table','graph':data.model=='graph'}">
+					<ul class="nav nav-tabs fl cl" navtabs>
+					  <li role="presentation" class="active"><a href="javascript:void(0);">设备激活</a></li>
+					  <li role="presentation" class=""><a href="javascript:void(0);">新增玩家</a></li>
+					  <li role="presentation" class=""><a href="javascript:void(0);">日活跃</a></li>
+					  <li role="presentation" class=""><a href="javascript:void(0);">收入</a></li>
+					  <li role="presentation" class=""><a href="javascript:void(0);">日付费人数</a></li>
+					  <li role="presentation" class=""><a href="javascript:void(0);">ARPU（日）</a></li>
+					</ul>
+					<div class="clear"></div>
+					<div class="panel-showData">
+						<div class="dataList dataList2 dataList_1 dataListAct">
+							<div class="dataGraph">
+								<div class="graph" data="dataList_graph" data-index="{{$index}}" data-data="channelDataQuality" data-list="1" name="设备激活"></div>
+								<div class="graphLimit" graphLimit datalimit="data.dataList_2.graphLimit" graphdata="data.trend.devices" graphfun="graphfun.dataList_graph" model="data.model" name="设备激活" hastarget="true" isfist="false" key="{d:'value',y:'item'}">
+								</div>
+							</div>
+							<div class="dataTable">
+								<table class="table table-bordered text-center">
+									<tr class="tableTr">
+										<th width='50%' ng-click="changeOrderBy(data.dataList_2,'item')">日期</th>
+										<th width='50%' ng-click="changeOrderBy(data.dataList_2,'value')">设备激活(台)</th>
+									</tr>
+									<tr ng-repeat="value in data.trend.devices | orderBy: data.dataList_2.orderBy.t+data.dataList_2.orderBy.s | pageStartFrom : data.dataList_2.limit.now*data.dataList_2.limit.max | limitTo: data.dataList_2.limit.max">
+										<td>{{value.item}}</td>
+										<td>{{value.value}}</td>
+									</tr>
+								</table>
+								<div class="tableLimit" tablelimit datalimit="data.dataList_2.limit" tabledata="data.trend.devices">
+								</div>
+							</div>
+						</div>
+						<div class="dataList dataList2 dataList_2">
+							<div class="dataGraph">
+								<div class="graph" data="dataList_graph" data-index="{{$index}}" data-data="channelDataQuality" data-list="2" name="新增玩家"></div>
+								<div class="graphLimit" graphLimit datalimit="data.dataList_2.graphLimit" graphdata="data.trend.devices" graphfun="graphfun.dataList_graph" model="data.model" name="新增玩家" hastarget="true" isfist="false" key="{d:'value',y:'item'}">
+								</div>
+							</div>
+							<div class="dataTable">
+								<table class="table table-bordered text-center">
+									<tr class="tableTr">
+										<th width='50%' ng-click="changeOrderBy(data.dataList_2,'item')">日期</th>
+										<th width='50%' ng-click="changeOrderBy(data.dataList_2,'value')">新增玩家(账户)</th>
+									</tr>
+									<tr ng-repeat="value in data.trend.newPlayers | orderBy: data.dataList_2.orderBy.t+data.dataList_2.orderBy.s | pageStartFrom : data.dataList_2.limit.now*data.dataList_2.limit.max | limitTo: data.dataList_2.limit.max">
+										<td>{{value.item}}</td>
+										<td>{{value.value}}</td>
+									</tr>
+								</table>
+								<div class="tableLimit" tablelimit datalimit="data.dataList_2.limit" tabledata="data.dataList_2.data">
+								</div>
+							</div>
+						</div>
+						<div class="dataList dataList2 dataList_3">
+							<div class="dataGraph">
+								<div class="graph" data="dataList_graph" data-index="{{$index}}" data-data="channelDataQuality" data-list="3" name="日活跃"></div>
+								<div class="graphLimit" graphLimit datalimit="data.dataList_3.graphLimit" graphdata="data.trend.dailyActive" graphfun="graphfun.dataList_graph" model="data.model" name="日活跃" hastarget="true" isfist="false" key="{d:'value',y:'item'}">
+								</div>
+							</div>
+							<div class="dataTable">
+								<table class="table table-bordered text-center">
+									<tr class="tableTr">
+										<th width='50%' ng-click="changeOrderBy(data.dataList_3,'item')">日期</th>
+										<th width='50%' ng-click="changeOrderBy(data.dataList_3,'value')">日活跃(账户数)</th>
+									</tr>
+									<tr ng-repeat="value in data.trend.dailyActive | orderBy: data.dataList_3.orderBy.t+data.dataList_3.orderBy.s | pageStartFrom : data.dataList_3.limit.now*data.dataList_3.limit.max | limitTo: data.dataList_3.limit.max">
+										<td>{{value.item}}</td>
+										<td>{{value.value}}</td>
+									</tr>
+								</table>
+								<div class="tableLimit" tablelimit datalimit="data.dataList_3.limit" tabledata="data.trend.dailyActive">
+								</div>
+							</div>
+						</div>
+						<div class="dataList dataList2 dataList_4">
+							<div class="dataGraph">
+								<div class="graph" data="dataList_graph" data-index="{{$index}}" data-data="channelDataQuality" data-list="4" name="收入"></div>
+								<div class="graphLimit" graphLimit datalimit="data.dataList_4.graphLimit" graphdata="data.trend.income" graphfun="graphfun.dataList_graph" model="data.model" name="收入" hastarget="true" isfist="false" key="{d:'value',y:'item'}">
+								</div>
+							</div>
+							<div class="dataTable">
+								<table class="table table-bordered text-center">
+									<tr class="tableTr">
+										<th width='50%' ng-click="changeOrderBy(data.dataList_4,'item')">日期</th>
+										<th width='50%' ng-click="changeOrderBy(data.dataList_4,'value')">收入(￥)</th>
+									</tr>
+									<tr ng-repeat="value in data.trend.income | orderBy: data.dataList_4.orderBy.t+data.dataList_4.orderBy.s | pageStartFrom : data.dataList_4.limit.now*data.dataList_4.limit.max | limitTo: data.dataList_4.limit.max">
+										<td>{{value.item}}</td>
+										<td>{{value.value}}</td>
+									</tr>
+								</table>
+								<div class="tableLimit" tablelimit datalimit="data.dataList_4.limit" tabledata="data.trend.income">
+								</div>
+							</div>
+						</div>
+						<div class="dataList dataList2 dataList_5">
+							<div class="dataGraph">
+								<div class="graph" data="dataList_graph" data-index="{{$index}}" data-data="channelDataQuality" data-list="5" name="日付费人数"></div>
+								<div class="graphLimit" graphLimit datalimit="data.dataList_5.graphLimit" graphdata="data.trend.dailyPaidPlayers" graphfun="graphfun.dataList_graph" model="data.model" name="日付费人数" hastarget="true" isfist="false" key="{d:'value',y:'item'}">
+								</div>
+							</div>
+							<div class="dataTable">
+								<table class="table table-bordered text-center">
+									<tr class="tableTr">
+										<th width='50%' ng-click="changeOrderBy(data.dataList_5,'item')">日期</th>
+										<th width='50%' ng-click="changeOrderBy(data.dataList_5,'value')">日付费人数(账户数)</th>
+									</tr>
+									<tr ng-repeat="value in data.trend.dailyPaidPlayers | orderBy: data.dataList_5.orderBy.t+data.dataList_5.orderBy.s | pageStartFrom : data.dataList_5.limit.now*data.dataList_5.limit.max | limitTo: data.dataList_5.limit.max">
+										<td>{{value.item}}</td>
+										<td>{{value.value}}</td>
+									</tr>
+								</table>
+								<div class="tableLimit" tablelimit datalimit="data.dataList_5.limit" tabledata="data.trend.dailyPaidPlayers">
+								</div>
+							</div>
+						</div>
+						<div class="dataList dataList2 dataList_6">
+							<div class="dataGraph">
+								<div class="graph" data="dataList_graph" data-index="{{$index}}" data-data="channelDataQuality" data-list="6" name="ARPU（日）"></div>
+								<div class="graphLimit" graphLimit datalimit="data.dataList_6.graphLimit" graphdata="data.trend.ARPU" graphfun="graphfun.dataList_graph" model="data.model" name="ARPU（日）" hastarget="true" isfist="false" key="{d:'value',y:'item'}">
+								</div>
+							</div>
+							<div class="dataTable">
+								<table class="table table-bordered text-center">
+									<tr class="tableTr">
+										<th width='50%' ng-click="changeOrderBy(data.dataList_6,'item')">日期</th>
+										<th width='50%' ng-click="changeOrderBy(data.dataList_6,'value')">（￥）ARPU（日）</th>
+									</tr>
+									<tr ng-repeat="value in data.trend.ARPU | orderBy: data.dataList_6.orderBy.t+data.dataList_6.orderBy.s | pageStartFrom : data.dataList_6.limit.now*data.dataList_6.limit.max | limitTo: data.dataList_6.limit.max">
+										<td>{{value.item}}</td>
+										<td>{{value.value}}</td>
+									</tr>
+								</table>
+								<div class="tableLimit" tablelimit datalimit="data.dataList_6.limit" tabledata="data.trend.ARPU">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="panel-changeData" graphtbale graphfun="graphfun" datachange="panel_change" datalimit="data.dataList_1.limit" model="data.model">
+					</div>
+					<!-------------图表表格切换，graphfun ----datachange(需要分页时删除不填)------------->
+				</div>
+			</div>
+			</li>
+				</ul>
+			</div>
+			<div class="tableList tableList_3" ng-class="({'tableListAct':tabsbtn==2})">
+				<ul class="tableListUl">
+					<li class="tableListLi tableListLiTh clear">
+						<span class="tableListTh">
+							<strong>渠道名称</strong>
+						</span>
+						<span class="tableListTh">
+							<strong>跟踪方式</strong>
+						</span>
+						<span class="tableListTh">
+							<strong>收入</strong>
+						</span>
+						<span class="tableListTh">
+							<strong>付费账户（每日加和）</strong>
+						</span>
+						<span class="tableListTh">
+							<strong>日均付费率</strong>
+						</span>
+						<span class="tableListTh">
+							<strong>日均ARPU</strong>
+						</span>
+						<span class="tableListTh">
+							<strong>日均ARPPU</strong>
+						</span>
+						<span class="tableListTh">
+							<strong>详情</strong>
+						</span>
+					</li>
+					<li class="tableListLi clear" ng-repeat="data in channelDataRevenue" ng-class="({'show_panel':data.show_panel})">
+						<div class="channelTr clear">
+							<span class="channelTd">
+								{{data.channel}}
+							</span>
+							<span class="channelTd">
+								{{data.trackMode}}
+							</span>
+							<span class="channelTd">
+								￥{{data.revenue}}
+							</span>
+							<span class="channelTd">
+								{{data.paidAccounts}}
+							</span>
+							<span class="channelTd">
+								{{data.dailyConv}}%
+							</span>
+							<span class="channelTd">
+								{{data.ARPU}}
+							</span>
+							<span class="channelTd">
+								{{data.ARPPU}}
+						</span>
+						<span class="channelTd show_panel_btn">
+								<p ng-click="showPanel(data,$event)" ng-show="!data.show_panel">趋势</p>
+								<p ng-click="data.show_panel=false;" ng-show="data.show_panel">收起</p>
+							</span>
+			</div>
+			<div class="showData">
+				<div class="panel-body" ng-class="{'table':data.model=='table','graph':data.model=='graph'}">
+					<ul class="nav nav-tabs fl cl" navtabs>
+					  <li role="presentation" class="active"><a href="javascript:void(0);">设备激活</a></li>
+					  <li role="presentation" class=""><a href="javascript:void(0);">新增玩家</a></li>
+					  <li role="presentation" class=""><a href="javascript:void(0);">日活跃</a></li>
+					  <li role="presentation" class=""><a href="javascript:void(0);">收入</a></li>
+					  <li role="presentation" class=""><a href="javascript:void(0);">日付费人数</a></li>
+					  <li role="presentation" class=""><a href="javascript:void(0);">ARPU（日）</a></li>
+					</ul>
+					<div class="clear"></div>
+					<div class="panel-showData">
+						<div class="dataList dataList2 dataList_1 dataListAct">
+							<div class="dataGraph">
+								<div class="graph" data="dataList_graph" data-index="{{$index}}" data-data="channelDataRevenue" data-list="1" name="设备激活"></div>
+								<div class="graphLimit" graphLimit datalimit="data.dataList_1.graphLimit" graphdata="data.trend.devices" graphfun="graphfun.dataList_graph" model="data.model" name="设备激活" hastarget="true" isfist="false" key="{d:'value',y:'item'}">
+								</div>
+							</div>
+							<div class="dataTable">
+								<table class="table table-bordered text-center">
+									<tr class="tableTr">
+										<th width='50%' ng-click="changeOrderBy(data.dataList_1,'item')">日期</th>
+										<th width='50%' ng-click="changeOrderBy(data.dataList_1,'value')">设备激活(台)</th>
+									</tr>
+									<tr ng-repeat="value in data.trend.devices | orderBy: data.dataList_1.orderBy.t+data.dataList_1.orderBy.s | pageStartFrom : data.dataList_1.limit.now*data.dataList_1.limit.max | limitTo: data.dataList_1.limit.max">
+										<td>{{value.item}}</td>
+										<td>{{value.value}}</td>
+									</tr>
+								</table>
+								<div class="tableLimit" tablelimit datalimit="data.dataList_1.limit" tabledata="data.trend.devices">
+								</div>
+							</div>
+						</div>
+						<div class="dataList dataList2 dataList_2">
+							<div class="dataGraph">
+								<div class="graph" data="dataList_graph" data-index="{{$index}}" data-data="channelDataRevenue" data-list="2" name="新增玩家"></div>
+								<div class="graphLimit" graphLimit datalimit="data.dataList_2.graphLimit" graphdata="data.trend.devices" graphfun="graphfun.dataList_graph" model="data.model" name="新增玩家" hastarget="true" isfist="false" key="{d:'value',y:'item'}">
+								</div>
+							</div>
+							<div class="dataTable">
+								<table class="table table-bordered text-center">
+									<tr class="tableTr">
+										<th width='50%' ng-click="changeOrderBy(data.dataList_2,'item')">日期</th>
+										<th width='50%' ng-click="changeOrderBy(data.dataList_2,'value')">新增玩家(账户)</th>
+									</tr>
+									<tr ng-repeat="value in data.trend.newPlayers | orderBy: data.dataList_2.orderBy.t+data.dataList_2.orderBy.s | pageStartFrom : data.dataList_2.limit.now*data.dataList_2.limit.max | limitTo: data.dataList_2.limit.max">
+										<td>{{value.item}}</td>
+										<td>{{value.value}}</td>
+									</tr>
+								</table>
+								<div class="tableLimit" tablelimit datalimit="data.dataList_2.limit" tabledata="data.trend.newPlayers">
+								</div>
+							</div>
+						</div>
+						<div class="dataList dataList2 dataList_3">
+							<div class="dataGraph">
+								<div class="graph" data="dataList_graph" data-index="{{$index}}" data-data="channelDataRevenue" data-list="3" name="日活跃"></div>
+								<div class="graphLimit" graphLimit datalimit="data.dataList_3.graphLimit" graphdata="data.trend.dailyActive" graphfun="graphfun.dataList_graph" model="data.model" name="日活跃" hastarget="true" isfist="false" key="{d:'value',y:'item'}">
+								</div>
+							</div>
+							<div class="dataTable">
+								<table class="table table-bordered text-center">
+									<tr class="tableTr">
+										<th width='50%' ng-click="changeOrderBy(data.dataList_3,'item')">日期</th>
+										<th width='50%' ng-click="changeOrderBy(data.dataList_3,'value')">日活跃(账户数)</th>
+									</tr>
+									<tr ng-repeat="value in data.trend.dailyActive | orderBy: data.dataList_3.orderBy.t+data.dataList_3.orderBy.s | pageStartFrom : data.dataList_3.limit.now*data.dataList_3.limit.max | limitTo: data.dataList_3.limit.max">
+										<td>{{value.item}}</td>
+										<td>{{value.value}}</td>
+									</tr>
+								</table>
+								<div class="tableLimit" tablelimit datalimit="data.dataList_3.limit" tabledata="data.trend.dailyActive">
+								</div>
+							</div>
+						</div>
+						<div class="dataList dataList2 dataList_4">
+							<div class="dataGraph">
+								<div class="graph" data="dataList_graph" data-index="{{$index}}" data-data="channelDataRevenue" data-list="4"  name="收入"></div>
+								<div class="graphLimit" graphLimit datalimit="data.dataList_4.graphLimit" graphdata="data.trend.income" graphfun="graphfun.dataList_graph" model="data.model" name="收入" hastarget="true" isfist="false" key="{d:'value',y:'item'}">
+								</div>
+							</div>
+							<div class="dataTable">
+								<table class="table table-bordered text-center">
+									<tr class="tableTr">
+										<th width='50%' ng-click="changeOrderBy(data.dataList_4,'item')">日期</th>
+										<th width='50%' ng-click="changeOrderBy(data.dataList_4,'value')">收入(￥)</th>
+									</tr>
+									<tr ng-repeat="value in data.trend.income | orderBy: data.dataList_4.orderBy.t+data.dataList_4.orderBy.s | pageStartFrom : data.dataList_4.limit.now*data.dataList_4.limit.max | limitTo: data.dataList_4.limit.max">
+										<td>{{value.item}}</td>
+										<td>{{value.value}}</td>
+									</tr>
+								</table>
+								<div class="tableLimit" tablelimit datalimit="data.dataList_4.limit" tabledata="data.trend.income">
+								</div>
+							</div>
+						</div>
+						<div class="dataList dataList2 dataList_5">
+							<div class="dataGraph">
+								<div class="graph" data="dataList_graph" data-index="{{$index}}" data-data="channelDataRevenue" data-list="5"  name="日付费人数"></div>
+								<div class="graphLimit" graphLimit datalimit="data.dataList_5.graphLimit" graphdata="data.trend.dailyPaidPlayers" graphfun="graphfun.dataList_graph" model="data.model" name="日付费人数" hastarget="true" isfist="false" key="{d:'value',y:'item'}">
+								</div>
+							</div>
+							<div class="dataTable">
+								<table class="table table-bordered text-center">
+									<tr class="tableTr">
+										<th width='50%' ng-click="changeOrderBy(data.dataList_5,'item')">日期</th>
+										<th width='50%' ng-click="changeOrderBy(data.dataList_5,'value')">日付费人数(账户数)</th>
+									</tr>
+									<tr ng-repeat="value in data.trend.dailyPaidPlayers | orderBy: data.dataList_5.orderBy.t+data.dataList_5.orderBy.s | pageStartFrom : data.dataList_5.limit.now*data.dataList_5.limit.max | limitTo: data.dataList_5.limit.max">
+										<td>{{value.item}}</td>
+										<td>{{value.value}}</td>
+									</tr>
+								</table>
+								<div class="tableLimit" tablelimit datalimit="data.dataList_5.limit" tabledata="data.trend.dailyPaidPlayers">
+								</div>
+							</div>
+						</div>
+						<div class="dataList dataList2 dataList_6">
+							<div class="dataGraph">
+								<div class="graph" data="dataList_graph" data-index="{{$index}}" data-data="channelDataRevenue" data-list="6" name="ARPU（日）"></div>
+								<div class="graphLimit" graphLimit datalimit="data.dataList_6.graphLimit" graphdata="data.trend.ARPU" graphfun="graphfun.dataList_graph" model="data.model" name="ARPU（日）" hastarget="true" isfist="false" key="{d:'value',y:'item'}">
+								</div>
+							</div>
+							<div class="dataTable">
+								<table class="table table-bordered text-center">
+									<tr class="tableTr">
+										<th width='50%' ng-click="changeOrderBy(data.dataList_6,'item')">日期</th>
+										<th width='50%' ng-click="changeOrderBy(data.dataList_6,'value')">（￥）ARPU（日）</th>
+									</tr>
+									<tr ng-repeat="value in data.trend.ARPU | orderBy: data.dataList_6.orderBy.t+data.dataList_6.orderBy.s | pageStartFrom : data.dataList_6.limit.now*data.dataList_6.limit.max | limitTo: data.dataList_6.limit.max">
+										<td>{{value.item}}</td>
+										<td>{{value.value}}</td>
+									</tr>
+								</table>
+								<div class="tableLimit" tablelimit datalimit="data.dataList_6.limit" index="5" tabledata="data.trend.ARPU">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="panel-changeData" graphtbale graphfun="graphfun" datachange="panel_change" datalimit="data.dataList_1.limit" model="data.model">
+					</div>
+					<!-------------图表表格切换，graphfun ----datachange(需要分页时删除不填)------------->
+				</div>
+			</div>
+			</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

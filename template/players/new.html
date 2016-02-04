@@ -1,0 +1,170 @@
+<div>
+	<div class="maintop">
+		<div datepicker class="col-xs-3 timeSelect" mstatdate="mstatdate">
+		</div>
+		<div selectChoose class="selectChoose">
+		</div>
+		<div class="clear"></div>
+		<div class="panel-selectChoose" callbackchannelqf ng-show="iscallback">
+			<ul ng-show="ischannel" class="cl">
+				<li>渠道：</li>
+				<li ng-repeat="channellist in callbackchannelqfdata.channellist">{{channellist}}</li>
+			</ul>
+			<ul ng-show="isqf"  class="cl">
+				<li>区服：</li>
+				<li ng-repeat="qflist in callbackchannelqfdata.qflist">{{qflist}}</li>
+			</ul>
+		</div>
+	</div>
+	<div class="panel panel-default panel_1">
+			<div class="panel-heading">
+				<strong>
+					新增玩家
+				</strong>
+				<div class="panel_downloadBtn" ng-click="mdownloaddata('avgGameTime')"></div>
+				<div class="clear"></div>
+			</div>
+			<div class="panel-body" ng-class="{'table':panel_1.model=='table','graph':panel_1.model=='graph'}">
+				<ul class="nav nav-tabs fl cl" navtabs>
+				  <li role="presentation" class="active"><a href="javascript:void(0);">新增激活和账户</a></li>
+				  <li role="presentation"><a href="javascript:void(0);">玩家转化</a></li>
+				</ul>
+				<div class="fl cl info" >
+					<div class="infoact">
+					SUM 设备 | 账户：<font><em>{{panel_1.dataList_1.deviceSUM}}</em> | <em>{{panel_1.dataList_1.accountSUM}}</em></font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					AVG 设备 | 账户：<font><em>{{panel_1.dataList_1.devicAVG}}</em> | <em>{{panel_1.dataList_1.accountAVG}}</em></font>
+					</div>
+				</div>
+				<div class="clear"></div>
+				<div class="panel-showData">
+					<div class="dataList dataList_1">
+						<div class="dataGraph">
+							<div class="graph" data="dataList_1_1_graph"></div>
+						</div>
+						<div class="dataTable">
+							<table class="table table-bordered text-center">
+								<tr class="tableTr">
+									<th width='33.3333%' ng-click="changeOrderBy(panel_1.dataList_1,'statdate')">日期</th>
+									<th width='33.3333%' ng-click="changeOrderBy(panel_1.dataList_1,'deviceCount')">激活台数(台)</th>
+									<th width='33.3333%' ng-click="changeOrderBy(panel_1.dataList_1,'userCount')">新增玩家(账户)</th>
+								</tr>
+								<tr ng-repeat="data in panel_1.dataList_1.data | orderBy: panel_1.dataList_1.orderBy.t+panel_1.dataList_1.orderBy.s | pageStartFrom : panel_1.dataList_1.limit.now*panel_1.dataList_1.limit.max | limitTo: panel_1.dataList_1.limit.max">
+									<td>{{data.statdate}}</td>
+									<td>{{data.deviceCount}}</td>
+									<td>{{data.userCount}}</td>
+								</tr>
+							</table>
+							<div class="tableLimit" tablelimit datalimit="panel_1.dataList_1.limit"  tabledata="panel_1.dataList_1.data">
+							</div>
+						</div>
+					</div>
+					<div class="dataList dataList_2">
+						<div class="dataGraph">
+							<div class="graph"  data="dataList_1_2_graph"></div>
+						</div>
+						<div class="dataTable">
+							<table class="table table-bordered text-center">
+								<tr class="tableTr">
+									<th width='50%' ng-click="changeOrderBy(panel_1.dataList_2,'statdate')">日期</th>
+									<th width='50%' ng-click="changeOrderBy(panel_1.dataList_2,'userTransformRate')">玩家转化(%)</th>
+								</tr>
+								<tr ng-repeat="data in panel_1.dataList_2.data | orderBy: panel_1.dataList_2.orderBy.t+panel_1.dataList_2.orderBy.s  | pageStartFrom : panel_1.dataList_2.limit.now*panel_1.dataList_2.limit.max | limitTo: panel_1.dataList_2.limit.max">
+									<td>{{data.statdate}}</td>
+									<td>{{data.userTransformRate}}</td>
+								</tr>
+							</table>
+							<div class="tableLimit" tablelimit datalimit="panel_1.dataList_2.limit"  tabledata="panel_1.dataList_2.data">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel-changeData" graphtbale graphtbale graphfun="graphfun" datachange="panel_1_change"  datalimit="0" model="panel_1.model">
+				</div>
+			</div>
+	</div>
+	<div class="clear" test>
+		<div class="col-xs-6">
+			<div class="panel panel-default panel_2">
+				<div class="panel-heading">
+					<strong>单设备账户数量分析（小号分析）
+					<div class="exp-box">
+						<em class="icon-exp">三角图标</em>
+						<div class="noun-exp" style="width:300px;">您所选时间内激活的设备，到当前为止的注册账号数目分布情况。通过小号分析能帮助了解多少比例的设备会反复注册多个账户，多少比例至今还未进行注册，分析刷小号情况</div>
+					</div>
+					</strong>
+					<div class="panel_downloadBtn" ng-click="mdownloaddata('avgGameTime')"></div>
+					<div class="clear"></div>
+				</div>
+				<div class="panel-body" ng-class="{'table':panel_2.model=='table','graph':panel_2.model=='graph'}">
+					<div class="panel-showData">
+						<div class="dataList2 dataList_1 dataListAct">
+							<div class="dataGraph">
+								<div class="graph" data="dataList_2_graph">
+
+								</div>
+								<div class="graphLimit" graphLimit datalimit="panel_2.dataList_1.graphLimit" graphdata="panel_2.dataList_1.data"  graphfun="graphfun.dataList_2_graph" model="panel_2.model" isfist="false" key="{d:'value',y:'statcount',y2:'value'}">
+								</div>
+							</div>
+							<div class="dataTable">
+								<table class="table table-bordered text-center">
+									<tr class="tableTr">
+										<th width='50%' ng-click="changeOrderBy(panel_2.dataList_1,'statcount')">小号数量</th>
+										<th width='50%' ng-click="changeOrderBy(panel_2.dataList_1,'value')">新增设备(台)</th>
+									</tr>
+									<tr ng-repeat="data in panel_2.dataList_1.data | orderBy: panel_2.dataList_1.orderBy.t+panel_2.dataList_1.orderBy.s  | pageStartFrom : panel_2.dataList_1.limit.now*panel_2.dataList_1.limit.max | limitTo: panel_2.dataList_1.limit.max">
+										<td>{{data.statcount}}</td>
+										<td>{{data.value}}</td>
+									</tr>
+								</table>
+								<div class="tableLimit" tablelimit datalimit="panel_2.dataList_1.limit" tabledata="panel_2.dataList_1.data">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="panel-changeData" graphtbale graphfun="graphfun" datalimit="panel_2.dataList_1.graphLimit" model="panel_2.model">
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6">
+			<div class="panel panel-default panel_3">
+				<div class="panel-heading">
+					<strong>渠道</strong>
+					<div class="panel_downloadBtn" ng-click="mdownloaddata('avgGameTime')"></div>
+					<div class="clear"></div>
+				</div>
+				<div class="panel-body" ng-class="{'table':panel_3.model=='table','graph':panel_3.model=='graph'}">
+					<div class="panel-showData">
+						<div class="dataList2 dataList_1 dataListAct">
+							<div class="dataGraph">
+								<div class="graph" data="dataList_3_graph">
+
+								</div>
+								<div class="graphLimit" graphLimit datalimit="panel_3.dataList_1.graphLimit" graphdata="panel_3.dataList_1.data"  graphfun="graphfun.dataList_3_graph" model="panel_3.model" isfist="false" key="{d:'value',y:'name'}">
+								</div>
+							</div>
+							<div class="dataTable">
+								<table class="table table-bordered text-center">
+									<tr class="tableTr">
+										<th width='50%' ng-click="changeOrderBy(panel_3.dataList_1,'name')">渠道</th>
+										<th width='50%' ng-click="changeOrderBy(panel_3.dataList_1,'value')">新增玩家(人)</th>
+									</tr>
+									<tr ng-repeat="data in panel_3.dataList_1.data | orderBy: panel_3.dataList_1.orderBy.t+panel_3.dataList_1.orderBy.s  | pageStartFrom : panel_3.dataList_1.limit.now*panel_3.dataList_1.limit.max | limitTo: panel_3.dataList_1.limit.max">
+										<td>{{data.name}}</td>
+										<td>{{data.value}}</td>
+									</tr>
+								</table>
+								<div class="tableLimit" tablelimit datalimit="panel_3.dataList_1.limit" tabledata="panel_3.dataList_1.data">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="panel-changeData" graphtbale graphfun="graphfun" datalimit="panel_3.dataList_1.graphLimit" model="panel_3.model">
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

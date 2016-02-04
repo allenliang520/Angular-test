@@ -1,0 +1,78 @@
+<html >
+	<head>
+	<title>无标题文档</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="dist/public/css/public.css">
+	<link rel="stylesheet" href="dist/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="dist/bootstrap/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="dist/public/css/jquery.jscrollpane.css">
+	<script src="dist/public/js/jquery-1.10.2.min.js"></script>
+	<script src="dist/bootstrap/js/bootstrap.min.js"></script>
+	<script src="dist/public/js/jquery.jscrollpane.min.js"></script>
+	<script src="dist/public/js/public.class.js"></script>
+		<style>
+		*{ margin:0px; padding:0px;}
+			.list{padding: 5px 10px}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<div class="location">您当前位置：导航地图</div>
+			<br>
+			<div class="container">
+				<div class="panel panel-default product">
+				  <div class="panel-heading">
+				  		产品信息
+						<div class="clear"></div>
+					</div>
+				  <div class="panel-body">
+						<a class="list" href="template/product/productList.html">产品列表</a>
+						<a class="list" href="template/product/signList.html">Android签名管理</a>
+				  </div>
+				</div>
+				<div class="panel panel-default pocket">
+				  <div class="panel-heading">
+				  		游戏包维护
+						<div class="clear"></div>
+					</div>
+				  <div class="panel-body">
+						<a class="list" href="template/pocket/pocketList.html">游戏包列表</a>
+						<a class="list" href="template/pocket/addPocket.html">添加游戏包</a>
+				  </div>
+				</div>
+				<div class="panel panel-default channel">
+				  <div class="panel-heading">
+				  		渠道管理
+						<div class="clear"></div>
+					</div>
+				  <div class="panel-body">
+						<a class="list" href="template/channel/channelList.html">渠道列表</a>
+						<a class="list" href="template/channel/addChannel.html">添加渠道</a>
+				  </div>
+				</div>
+				<div class="panel panel-default unpack">
+				  <div class="panel-heading">
+				  		打包管理
+						<div class="clear"></div>
+					</div>
+				  <div class="panel-body">
+						<a class="list" href="template/unpack/packList.html">打包任务列表</a>
+						<a class="list" href="template/unpack/addUnpack.html">打包任务添加</a>
+				  </div>
+				</div>
+			</div>
+
+
+		</div>
+	</body>
+<script>
+	(function($){
+		var t = get_query("t");
+		if(!t)
+		return;
+		$('.panel').addClass("hidden");
+		$('.'+t).removeClass("hidden");
+	})(jQuery)
+
+</script>
+</html>

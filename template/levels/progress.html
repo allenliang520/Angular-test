@@ -1,0 +1,192 @@
+<div>
+	<div class="maintop">
+		<div datepicker class="col-xs-3 timeSelect" mstatdate="mstatdate">
+		</div>
+		<!--------日期选择控件----------->
+		<div selectChoose class="selectChoose">
+		</div>
+		<!--------渠道区服选择控件----------->
+		<div class="clear"></div>
+		<div class="panel-selectChoose" callbackchannelqf ng-show="iscallback">
+			<ul ng-show="ischannel" class="cl">
+				<li>渠道：</li>
+				<li ng-repeat="channellist in callbackchannelqfdata.channellist">{{channellist}}</li>
+			</ul>
+			<ul ng-show="isqf"  class="cl">
+				<li>区服：</li>
+				<li ng-repeat="qflist in callbackchannelqfdata.qflist">{{qflist}}</li>
+			</ul>
+		</div>
+		<!--------已选择渠道区服显示----------->
+	</div>
+	<div class="panel panel-default panel_1">
+			<div class="panel-heading">
+				<strong>
+					新玩家等级
+					<div class="exp-box">
+						<em class="icon-exp">三角图标</em>
+						<div class="noun-exp" style="width:300px;">
+						</div>
+					</div>
+					<!--------提示框----------->
+				</strong>
+				<div class="panel_downloadBtn" ng-click="mdownloaddata('avgGameTime')"></div>
+				<!--------下载按钮----------->
+				<div class="clear"></div>
+			</div>
+			<div class="panel-body" ng-class="{'table':panel_1.model=='table','graph':panel_1.model=='graph'}">
+			<!--------默认panel展示类型，表格tale或图表graph---------->
+				<ul class="nav nav-tabs fl cl" navtabs>
+				  <li role="presentation" class="active"><a href="javascript:void(0);">首日等级</a></li>
+				  <li role="presentation"><a href="javascript:void(0);">首周等级</a></li>
+				  <li role="presentation"><a href="javascript:void(0);">14日等级</a></li>
+				</ul>
+				<!--------选项卡----------->
+				<div class="fl cl info" >
+					<div class="infoact">
+					AVG ：<font><em>{{panel_1.dataList_1.AVG}}</em></font>
+					</div>
+					<div class="infoact">
+					AVG ：<font><em>{{panel_1.dataList_2.AVG}}</em></font>
+					</div>
+					<div class="infoact">
+					AVG ：<font><em>{{panel_1.dataList_3.AVG}}</em></font>
+					</div>
+				</div>
+				<!--------各选项卡数据展示----------->
+				<div class="clear"></div>
+				<div class="panel-showData">
+					<div class="dataList dataList2 dataList_1">
+						<div class="dataGraph">
+							<div class="graph" data="dataList_1_1_graph"></div>
+							<!--------图表div，data为graphfun的key----------->
+						</div>
+						<div class="dataTable">
+							<table class="table table-bordered text-center">
+								<tr class="tableTr">
+									<th width='50%' ng-click="changeOrderBy(panel_1.dataList_1,'item')">等级</th>
+									<th width='50%' ng-click="changeOrderBy(panel_1.dataList_1,'value')">新增付费玩家(账户)</th>
+									<!--------表格th(数据对象，排序字段)----------->
+								</tr>
+								<tr ng-repeat="data in panel_1.dataList_1.data | orderBy: panel_1.dataList_1.orderBy.t+panel_1.dataList_1.orderBy.s | pageStartFrom : panel_1.dataList_1.limit.now*panel_1.dataList_1.limit.max | limitTo: panel_1.dataList_1.limit.max">
+									<td>{{data.item}}</td>
+									<td>{{data.value}}</td>
+								</tr>
+							</table>
+							<div class="tableLimit" tablelimit datalimit="panel_1.dataList_1.limit"  tabledata="panel_1.dataList_1.data">
+							</div>
+							<!--------表格分页，datalimit为分页参数，tabledata为数据----------->
+						</div>
+					</div>
+						<div class="dataList dataList2 dataList_2">
+						<div class="dataGraph">
+							<div class="graph" data="dataList_1_2_graph"></div>
+							<!--------图表div，data为graphfun的key----------->
+
+						</div>
+						<div class="dataTable">
+							<table class="table table-bordered text-center">
+								<tr class="tableTr">
+									<th width='50%' ng-click="changeOrderBy(panel_1.dataList_2,'item')">等级</th>
+									<th width='50%' ng-click="changeOrderBy(panel_1.dataList_2,'value')">新增付费玩家(账户)</th>
+									<!--------表格th(数据对象，排序字段)----------->
+								</tr>
+								<tr ng-repeat="data in panel_1.dataList_2.data | orderBy: panel_1.dataList_2.orderBy.t+panel_1.dataList_2.orderBy.s | pageStartFrom : panel_1.dataList_2.limit.now*panel_1.dataList_2.limit.max | limitTo: panel_1.dataList_2.limit.max">
+									<td>{{data.item}}</td>
+									<td>{{data.value}}</td>
+								</tr>
+							</table>
+							<div class="tableLimit" tablelimit datalimit="panel_1.dataList_2.limit"  tabledata="panel_1.dataList_2.data">
+							</div>
+							<!--------表格分页，datalimit为分页参数，tabledata为数据----------->
+						</div>
+					</div>
+						<div class="dataList dataList2 dataList_3">
+						<div class="dataGraph">
+							<div class="graph" data="dataList_1_3_graph"></div>
+							<!--------图表div，data为graphfun的key----------->
+
+						</div>
+						<div class="dataTable">
+							<table class="table table-bordered text-center">
+								<tr class="tableTr">
+									<th width='50%' ng-click="changeOrderBy(panel_1.dataList_3,'item')">等级</th>
+									<th width='50%' ng-click="changeOrderBy(panel_1.dataList_3,'value')">总新增付费玩家(账户)</th>
+									<!--------表格th(数据对象，排序字段)----------->
+								</tr>
+								<tr ng-repeat="data in panel_1.dataList_3.data | orderBy: panel_1.dataList_3.orderBy.t+panel_1.dataList_3.orderBy.s | pageStartFrom : panel_1.dataList_3.limit.now*panel_1.dataList_3.limit.max | limitTo: panel_1.dataList_3.limit.max">
+									<td>{{data.item}}</td>
+									<td>{{data.value}}</td>
+								</tr>
+							</table>
+							<div class="tableLimit" tablelimit datalimit="panel_1.dataList_3.limit"  tabledata="panel_1.dataList_3.data">
+							</div>
+							<!--------表格分页，datalimit为分页参数，tabledata为数据----------->
+						</div>
+					</div>
+				</div>
+				<div class="panel-changeData" graphtbale  graphfun="graphfun" datachange="panel_1_change"  datalimit="0" model="panel_1.model">
+				</div>
+				<!-------------图表表格切换，graphfun ----datachange(需要分页时删除不填)------------->
+			</div>
+	</div>
+	<div class="panel panel-default panel_2">
+			<div class="panel-heading">
+				<strong>
+					新玩家7日内等级变迁
+					<div class="exp-box">
+						<em class="icon-exp">三角图标</em>
+						<div class="noun-exp" style="width:300px;">							所选期间的新增玩家在新增后的7日内每日的等级进展情况，可用于分析同一批新增玩家中，浅中重度玩家的不同比例
+						</div>
+					</div>
+					<!--------提示框----------->
+				</strong>
+				<div class="panel_downloadBtn" ng-click="mdownloaddata('avgGameTime')"></div>
+				<!--------下载按钮----------->
+				<div class="clear"></div>
+			</div>
+			<div class="panel-body" ng-class="{'table':panel_2.model=='table','graph':panel_2.model=='graph'}">
+				<!--------各选项卡数据展示----------->
+				<div class="clear"></div>
+				<div class="panel-showData">
+					<div class="dataList dataList2 dataList_1 dataListAct">
+						<div class="dataGraph">
+							<div class="graph" data="dataList_2_1_graph"></div>
+							<!--------图表div，data为graphfun的key----------->
+						</div>
+						<div class="dataTable">
+							<table class="table table-bordered text-center">
+								<tr class="tableTr">
+									<th width='12.5%' ng-click="changeOrderBy(panel_2.dataList_1,'title')">等级</th>
+									<th width='12.5%' ng-click="changeOrderBy(panel_2.dataList_1,'firstNew')">新增首日</th>
+									<th width='12.5%' ng-click="changeOrderBy(panel_2.dataList_1,'1day')">+1日</th>
+									<th width='12.5%' ng-click="changeOrderBy(panel_2.dataList_1,'2day')">+2日</th>
+									<th width='12.5%' ng-click="changeOrderBy(panel_2.dataList_1,'3day')">+3日</th>
+									<th width='12.5%' ng-click="changeOrderBy(panel_2.dataList_1,'4day')">+4日</th>
+									<th width='12.5%' ng-click="changeOrderBy(panel_2.dataList_1,'5day')">+5日</th>
+									<th width='12.5%' ng-click="changeOrderBy(panel_2.dataList_1,'6day')">+6日</th>
+									<!--------表格th(数据对象，排序字段)----------->
+								</tr>
+								<tr ng-repeat="data in panel_2.dataList_1.data | orderBy: panel_2.dataList_1.orderBy.t+panel_2.dataList_1.orderBy.s | pageStartFrom : panel_2.dataList_1.limit.now*panel_2.dataList_1.limit.max | limitTo: panel_2.dataList_1.limit.max">
+									<td>{{data.title}}</td>
+									<td>{{data.firstNew}}</td>
+									<td>{{data['1day']}}</td>
+									<td>{{data['2day']}}</td>
+									<td>{{data['3day']}}</td>
+									<td>{{data['4day']}}</td>
+									<td>{{data['5day']}}</td>
+									<td>{{data['6day']}}</td>
+								</tr>
+							</table>
+							<div class="tableLimit" tablelimit datalimit="panel_2.dataList_1.limit"  tabledata="panel_2.dataList_1.data">
+							</div>
+							<!--------表格分页，datalimit为分页参数，tabledata为数据----------->
+						</div>
+					</div>
+				</div>
+				<div class="panel-changeData" graphtbale  graphfun="graphfun" datachange="panel_2_change"  datalimit="0" model="panel_2.model">
+				</div>
+				<!-------------图表表格切换，graphfun ----datachange(需要分页时删除不填)------------->
+			</div>
+	</div>
+</div>

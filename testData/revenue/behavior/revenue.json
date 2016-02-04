@@ -1,0 +1,74 @@
+{
+  "revenue": [
+    {
+      "percentage": 19.9,
+      "accounts": 180.64,
+      "title": "微信"
+    },
+    {
+      "percentage": 1.2,
+      "accounts": 10.88,
+      "title": "快用"
+    },
+    {
+      "percentage": 7.9,
+      "accounts": 71.36,
+      "title": "PP助手"
+    },
+    {
+      "percentage": 20.4,
+      "accounts": 184.96,
+      "title": "91助手"
+    },
+    {
+      "percentage": 50.7,
+      "accounts": 460.32,
+      "title": "支付宝"
+    },
+    {
+      "percentage": 50.7,
+      "accounts": 460.32,
+      "title": "支付宝"
+    },
+    {
+      "percentage": 50.7,
+      "accounts": 460.32,
+      "title": "支付宝"
+    },
+    {
+      "percentage": 50.7,
+      "accounts": 460.32,
+      "title": "支付宝"
+    },
+    {
+      "percentage": 50.7,
+      "accounts": 460.32,
+      "title": "支付宝"
+    },
+    {
+      "percentage": 50.7,
+      "accounts": 460.32,
+      "title": "支付宝"
+    },
+    {
+      "percentage": 50.7,
+      "accounts": 460.32,
+      "title": "支付宝"
+    },
+    {
+      "percentage": 50.7,
+      "accounts": 460.32,
+      "title": "支付宝"
+    },
+    {
+      "percentage": 50.7,
+      "accounts": 460.32,
+      "title": "支付宝"
+    },
+    {
+      "percentage": 50.7,
+      "accounts": 460.32,
+      "title": "支付宝"
+    }
+  ]
+}

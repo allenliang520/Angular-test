@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>SDK管理平台-修改密码</title>
+	<link rel="stylesheet" href="dist/public/css/public.css">
+	<link rel="stylesheet" href="dist/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="dist/bootstrap/css/bootstrap-theme.min.css">
+	<script src="dist/public/js/jquery-1.10.2.min.js"></script>
+	<script src="dist/bootstrap/js/bootstrap.min.js"></script>
+	<script src="dist/public/js/public.class.js"></script>
+	<style>
+		#login{position: fixed;width: 100%;height: 100%;background-image: url(dist/images/loginBg2.jpg);background-position: top center;}
+		#loginDialog{position: absolute;left: 50%;top: 50%;width: 490px;height: 460px;margin: -230px 0 0 -223.5px;border-radius: 5px;overflow: hidden;background-color: #fff;box-shadow: 0px 0px 10px #282828;}
+		.loginTitle{width: 100%;height: 85px;text-align: center; background-color: #282828;box-shadow: 0px 0px 5px #282828;}
+		.loginTitle h3{margin: 0 auto;color: #fff;line-height: 85px;}
+		.loginForm{padding: 50px 0;}
+		.loginForm input{width: 100%;}
+		.loginBtn{width: 100%;background-color: #27a9e3;font-size: 16px;color: #fff;border-radius: 4px;}
+		.loginBtn:hover{background-color: #32b0e8;color: #fff;}
+		.form-group{margin-bottom: 0}
+		.form-group label{margin-bottom: 5px}
+		.form-group input{margin-bottom: 15px;color:#282828; }
+		.form-group .reset{border: none;background-color: transparent;color:#32b0e8;margin-bottom: 10px;outline: none;}
+		.form-group .reset:hover{text-decoration: underline;}
+		.modyfyBtn{width: 30%; background-color: #27a9e3;font-size: 16px;color: #fff;border-radius: 4px;}
+		.backBtn{width: 30%;background-color: #bcbcbc;font-size: 16px;color: #fff;border-radius: 4px;}
+		.backBtn:hover{background-color: #c7c7c7;color: #fff;}
+		.btn{color: #fff;}
+		.btn:hover{color: #fff;text-decoration: none;}
+	</style>
+</head>
+<body>
+<!--
+<div class="modal fade" id="loginDialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">用户名:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="control-label">密码:</label>
+            <input type="password" class="form-control" id="recipient-psw">
+          </div>
+        </form>
+      </div
+    </div>
+  </div>
+-->
+<div id="login">
+  <div id="loginDialog">
+  	<div class="loginTitle">
+  		<h3>SDK管理平台-修改密码</h3>
+  	</div>
+  	<div class="loginForm">
+  		<form action="index.html">
+  			<div class="form-group col-sm-8 col-sm-offset-2">
+  				<label for="">旧密码</label>
+  			</div>
+  			<div class="form-group col-sm-8 col-sm-offset-2">
+  				<input type="text" class="form-control" required>	<!--input 旧密码-->
+  			</div>
+  			<div class="form-group col-sm-8 col-sm-offset-2">
+  				<label for="">新密码</label>
+  			</div>
+  			<div class="form-group col-sm-8 col-sm-offset-2">
+  				<input type="password" class="form-control" required>  	<!--input 新密码-->
+  			</div>
+  			<div class="form-group col-sm-8 col-sm-offset-2">
+  				<label for="">再次输入</label>
+  			</div>
+  			<div class="form-group col-sm-8 col-sm-offset-2">
+  				<input type="password" class="form-control" required>  	<!--input 新密码2-->
+  			</div>
+  			<div class="form-group col-sm-8 col-sm-offset-2">
+  				<button class="reset pull-right" type="reset" >Reset</button>
+  			</div>
+  			<div class="form-group col-sm-8 col-sm-offset-2 text-center">
+				<a href="index.html" class="btn backBtn">返回</a>
+  				<button class="modyfyBtn btn" type="submit">修改</button>
+  			</div>
+  		</form>
+  	</div>
+  </div>
+</div>
+</body>
+<script>
+	  //$("#loginDialog").modal('show');
+	  </script>
+</html>

@@ -1,0 +1,80 @@
+<div id="selectChoose">
+	<a href="javascript:void(0);" class="selectChooseBtn" ng-click="slideToggle()">
+		<span><font>筛选</font></span>
+	</a>
+	<div class="clear"></div>
+	<div class="selectDialog">
+		<div class="select selectChannel cl">
+			<div class="selectTitle cl">
+				<label for="">渠道：</label>
+				<div class="selectBtn" ng-class="{'selectBtn-on':isChannel}" ng-click="isChannelToggle()" ></div>
+				<div class="selectStatus">
+					<span ng-hide="isChannel">未选择</span>
+					<span ng-show="isChannel">已选择<font class="grean">{{selectChannelSum}}</font>项</span>
+				</div>
+			</div>
+			<div class="selectCon" ng-show="isChannel">
+				<div class="selectSearch">
+					<input type="text" class="searchInput" ng-model="channelSearch" placeholder="搜索渠道">
+					<div class="choose fr">
+						<div class="chooseBtn" ng-click='addAllChannel()'>全选</div>
+						<div class="chooseBtn" ng-click='removeAllChannel()'>不选</div>
+					</div>
+				</div>
+				<ul class="selectUl cl">
+					<li ng-repeat="channeldata in channeldata | filter:channelSearch"  data-channelId='{{channeldata.id}}'  title="{{channeldata.companyName}}" class="li" ng-class="{'li-on': hadAddChannel(channeldata.id)}">
+					<span ng-show="hadAddChannel(channeldata.id)" ng-click="chooseChannel2(channeldata.id,channeldata.name,1);removeSubChannelList(channeldata.id)">×</span>
+					<span class="channelName" ng-show="!hadAddChannel(channeldata.id)" ng-click="chooseChannel2(channeldata.id,channeldata.companyName,0);showSubChannelList(channeldata.id)">{{channeldata.companyName}}</span>
+					<span class="channelName" ng-show="hadAddChannel(channeldata.id)">{{channeldata.companyName}}</span>
+
+					</li>
+				</ul>
+				<div class="selectUl cl" style="border-top:1px dashed #b7bfc3;" ng-show="showSubChannelData.length > 0">
+					<div class="clear" ng-repeat="showSubChannelData in showSubChannelData" >
+						<p style="margin:0;">{{showSubChannelData.companyName}}:</p>
+						<ul>
+							<li ng-repeat="list in showSubChannelData.list" class="li" ng-class="{'li-on': hadAddSubChannel(showSubChannelData.id,list.subchannelId)}">
+							<span ng-show="hadAddSubChannel(showSubChannelData.id,list.subchannelId)" ng-click="removeSubChannel(showSubChannelData.id,list.subchannelId)">×</span>
+							<span class="channelName" ng-show="hadAddSubChannel(showSubChannelData.id,list.subchannelId)">{{list.subchannelId}}</span>
+							<span class="channelName" ng-show="!hadAddSubChannel(showSubChannelData.id,list.subchannelId)" ng-click="addSubChannelList(showSubChannelData.id,list.subchannelId)">{{list.subchannelId}}</span>
+
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="select selectAreaClothing cl">
+			<div class="selectTitle cl">
+				<label for="">区服：</label>
+				<div class="selectBtn " ng-class="{'selectBtn-on':isAreaClothing}" ng-click="isAreaClothingToggle()"></div>
+				<div class="selectStatus">
+					<span ng-hide="isAreaClothing">未选择</span>
+					<span ng-show="isAreaClothing">已选择<font class="grean">{{selectAreaClothingSum}}项</font></span>
+				</div>
+			</div>
+			<div class="selectCon" ng-show="isAreaClothing">
+				<div class="selectSearch">
+					<input type="text" class="searchInput" ng-model="areaClothingSearch" placeholder="搜索区服">
+					<div class="choose fr">
+							<div class="chooseBtn" ng-click='addAllAreaClothing()'>全选</div>
+							<div class="chooseBtn" ng-click='removeAllAreaClothing()'>不选</div>
+					</div>
+				</div>
+				<ul class="selectUl cl">
+					<li ng-repeat="areaClothingData in areaClothingData | filter:areaClothingSearch"  data-channelId='{{areaClothingData.id}}'  title="{{areaClothingData.name}}" class="li" ng-class="{'li-on': hadAddAreaClothing(areaClothingData.id)}">
+					<span ng-show="hadAddAreaClothing(areaClothingData.id)" ng-click="chooseAddAreaClothing2(areaClothingData.id,areaClothingData.name,1)">×</span>
+					<span  class="channelName" ng-show="!hadAddAreaClothing(areaClothingData.id)" ng-click="chooseAddAreaClothing2(areaClothingData.id,areaClothingData.name,0)">{{areaClothingData.name}}</span>
+					<span  class="channelName"  ng-show="hadAddAreaClothing(areaClothingData.id)">{{areaClothingData.name}}</span>
+
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="selectFooter">
+			<div class="dialogBtn dialogBtnQd" ng-click="qd()">确定</div>
+		<div class="dialogBtn dialogBtnQx" ng-click="slideToggle()">取消</div>
+		</div>
+	</div>
+</div>
